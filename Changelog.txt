@@ -1,0 +1,308 @@
+[h1]1.1 "New Horizons"[/h1]
+[h2]Additions[/h2]
+[h3]Items[/h3]
+Added Asteroid Behomoth, Sky God, and Jörmungandr Treasure Bags
+Added Sky Essence
+Added Strawberry
+Added Steel Repeater and Shotgun
+Added Cosmic Slinger
+Implemented World Artifact
+Added Galactic Grenade
+Added Stun Bomb
+Added Sky weapons, and upgrade to Star Weapons
+Added Ancient Cane, a summon weapon dropped by the Lunatic Cultist
+Added Ancient Excalibur
+Added Shadowfire Bow, Elemental Catastrophy, and Cosmic Catastrophy
+Added Cornucopia, Red Envelope, and Firecracker
+Added Cupid and Leprechaun o'Fyffe pets
+Added Mythical set
+Added Spine Scarf and Crown of the Sky God
+Added Benthic fishing gear
+Added Shade Scale
+Added Desert Spirit Trophy
+Added Hellfire Egg
+Added Relics
+Added Shroomstick
+Implemented Stardust Whip
+Added Sirocco
+Added Soul Shard in the place of Shattered Insignias
+Added Shroomite Bullet
+
+[h3]NPCs[/h3]
+Added a new Pre-Hardmode boss, Sky God
+Added Baby Dragon
+Added Bloody Aglamation
+Added a new miniboss the Mythical Wyvern
+Added a late Pre-Hardmode boss, Jörmungandr
+
+[h3]Buffs[/h3]
+Added Infested debuff
+Added Elemental debuff
+Added Instability and Zirconium Slow debuffs
+Added Lutetium Armor buff and Lutetium Cooldown debuff
+Added Sirrocco Tag debuff
+
+[h3]Tiles/Furniture[/h3]
+Added 3 new Music Boxes for Hellfire Dragon's, Galactic Peril's, and Desert Spirit's Themes
+Added Placed variants of all the bars (14 new tiles)
+Added Hellfire, Charred and Burnt Bricks and Furniture
+
+[h3]Other[/h3]
+Added "Galactic Style" Mod Menu
+Added Mod Calls for boss downeds
+Added 3 new projectile variants for Nautilus weapons
+
+[h2]Changes[/h2]
+[h3]Reworks[/h3]
+Reworked Hellfire Blade
+Truffle Weapons now have special abilities, but lower damage
+Reworked Hellstorm
+Hellflame Bow now fires a unique arrow instead of Hellfire arrows
+All mod weapons/armors have a sell price based on their rarity
+Reworked Solar Blade/Sunset Stabber into a shortsword
+Paint Strype no longer power scales
+When holding the Cosmic Edge you get the abilities of the Magma Stone
+Mushy Mace now acts like a flail
+Christmas Cutter swings twice as fast, deals four more damage and drops a projectile from the Sky every third swing
+Made Feather weapons more unique
+Iridium Launcher now has a unique rocket type
+Reworked Ancient Spear into Blade of Fire and Ice (new name, sprite, and balance)
+Reworked Ancient Bow into Bow of Shock (new name, sprite, and balance)
+Debuff Gun now fires once per animation
+Reworked Flamethrowers
+Aslan has much less damage, but fires two regular arrow's alongside the Roar. The Roar now deals double the weapon's base damage
+Amaza Shotgun now acts like a shotgun
+Zirconium Armor has an entirely new set bonus, warping
+Lutetium Armor has a new set bonus, hardening the armor, giving them higher endurance, but slower speed
+Osmium Armor has a new set bonus, enraging the player
+Royal Beam now reflects off blocks, moves much faster, and has lighter colors, but has a smaller hitbox
+Amaza Blade's projectile has new AI, a larger hitbox, but lower velocity and only fires every other swing
+Frost Sickle does less damage, but inflicts Frostbite
+Reworked Brightcore Staff
+Reworked Ancient Stave into Brightcore Storm (new name, sprite, balance, tier)
+Reworked Hellflame Armor set bonus
+Reworked Nebula Flare/Flamer
+Reworked Galactic Peril into a multi-stage boss fight
+Shade armor now has a unique set bonus
+Storm's Herald now acts like a spear
+Reworked Iridium Blaster
+
+[h3]Rebalances[/h3]
+Steel Bars are now sold for 40 silver
+Starter Bag is no longer Researchable
+Prototype Prism no longer autofires, but now deals 6 damage
+Nerfed Hellflame Bow damage to 190 from 210
+Haemorrhaxe axe power reduced to 140%
+Removed damage buff in Blood Mode
+Heavily reduced modded slime variant spawn rates
+All buff inducing armor sets had their buff times reduced from 10 to 3 seconds
+Goblin Blade no longer autoswings, has a much slower speed, but has much higher knockback and damage
+Frost Rifle is now only 1/3 as fast, but does more damage
+Having too many of the defense buffs active at once will dramatically reduce your endurance
+Greatly reduced velocity of Water Sphere
+Amaza and Sacred ores spawn deeper underground
+Reduced Sagitta firing rate and velocity
+Celestial Sigil is now consumable again
+Increased Velocity of Ancient Light, but decreased timeLeft
+Swords now uses local immunity
+Goblin Blade now deals 23 damage and had it's knockback reduced from 11 to 6, but moves quicker
+Ceramic Sword now deals 9 damage
+Space Sword now deals 30 damage
+Elemental Edge now deals 110 damage and has a immensely reduced projectile timeLeft
+Chlorophyte Shortsword fires the spore cloud out at double velocity
+Cobalt Shortsword now stabs fast and has autoswing
+Palladium Shortsword now has 20% crit chance
+Upon striking an enemy with a Mythril Shortsword, it will launch 5 Mythril Shard projectiles
+Upon striking an enemy with a Orichalcum Shortsword, it will launch a Oricalcum Petal projectile
+Adamanatite Shortsword is surrounded by an aura of energy, and launches Adamantite Spikes when hitting an enemy
+Titanium Shortsword leaves behind a lingering after-image that deals half damage
+Reduced Debuff Gun damage immensely (by ~61.5%)
+Nerfed Lutetium Armor speed boost, but increased defense
+Increased Sacred Tide useTime by 25% and reduced crit to -94%
+Nerfed Constellation Weavers flight time
+Reduced Chaos Sphere damage and homing speed, but increased homing range
+Asteroid Rifle fires once per click instead of thrice
+Increased Steel Club knockback, damage, and use time, and removed its autoswing
+Reduced Steel Sword damage
+Goblin Bow no longer autofires, now deals 18 damage, is slower, and has a velocity 7 instead of 9
+Chaos Orb no longer has extraUpdates and has reduced homing distance and damage
+Nerfed Frost Drill pickaxe power and knockback, but increased speed
+Bad Hell Blaze no longer penetrates and has reduced timeLeft
+Decreased Prototype Prism damage, and increased mana cost and useTime
+Distributed Minion Slots throughout Hellflame Armor
+Tomahawks are more affected by gravity, and now equally so
+Asteroid Punch is no longer killed on contact with NPCs
+Cosmic Edge only pierces 99 times instead of 10000 times
+Asteroid Gauntlet is twice as fast, autoswings, deals double damage, but no longer creates a shockwave
+Shroom Blaster has increased stats, but slower speeds, and converts bullets into Shroomite Bullets
+Vortex Launcher has more rockets avaliable, and will chose explosive rockets if explosive ammo is chosen
+
+[h3]Graphic Changes[/h3]
+Resprited Titanium Shortsword
+Animated Hell's Blaze projectile
+Amaza Wings now glow
+Substantially altered and animated Lion's Roar sprite
+Resprited Silver Slime
+Resprited Scarab Sword
+Recolored Desert Spirit Bag
+Animated Cyan Slime
+Resprited Solar Blade/Sunset Stabber
+Resprited Blood Mode/Ritualistic Dagger of Blood and No Hit Mode/Cursed Chalice of Death
+Resprited Hellfire
+Mythril Defense Potion is now correctly oriented
+Resprited Life Insignia
+Updated Holy Guard shield graphic
+Resized and Recolored Steel Chestplate item sprite
+Edited and Recolored Enchanted Wrath
+Animated Water Sphere
+Edited Blade of the Eater sprite
+Modified Feather projectile (sword) sprite
+Edited Hellflame Bow
+Recolored Terrager
+Edited Adamantite Shortsword sprite
+Resprited Constellation Weavers item sprite and wings
+Resprited Universal Insignia item sprite and wings
+Resprited Otherworldly Insignia
+Resprited Neutron Insignia item sprite and shield
+Insignias now pulsate
+Chaos Sphere dust is larger and is less transparent, but the projectile is more transparent
+Resprited and Animated Amaza Sword's projectile
+Resprited Goblin Blade
+Reverted Frost Blade resprite
+Resprited Frost Drill
+Frost Bullet now looks like a bullet
+Resprited Torrid Sword
+Resprited Meteor Throwing Axe
+Resprited Blood Saber and Blood Armor to match blood weapon theme
+Altered Sere Bow sprite
+Updated Asteroid Punch sprite
+
+[h3]Renaming[/h3]
+Renamed Lions Roar to Lion's Roar
+Renamed Beetle Pickaxe to Darkling Pickaxe
+Renamed Beetle Hamaxe to Darkling Hamaxe
+Renamed Beetle Sword to Scarab Sword
+Renamed Beetle Spear to Weevil Poker
+Renamed Shroomite Launcher to Shroomite Cannon
+Renamed Shroomite Rifle to Shroom Blaster
+Renamed Spectre Tome to Tome of the Spectre Curse
+Renamed Hellfire Bow to Hellflame Bow
+Renamed Hellfire Dragon "Treasure Bag" to "Treasure Bag (Hellfire Dragon)"
+Renamed Solar Blade to Sunset Stabber
+Renamed the 'Blood Mode' item to Ritualistic Dagger of Blood
+Renamed the 'No Hit Mode' item to Cursed Chalice of Death
+Renamed Palm Wand projectile to Water Sphere
+Renamed Armor Special Ability hotkey to Armor Ability hotkey
+Renamed Nebula Flare to Nebula Flamer
+Renamed Steel Hammer to Steel Warhammer
+Renamed Terra Splosion to Terrasplosion
+
+[h3]Recipes[/h3]
+Removed Spectre Staff recipe
+Added recipes for the Lihzarhd Power Cell
+Gamemode enablers are now craftable from nothing at a Demon Altar
+Cosmic Edge now requires a Magma Stone and Ancient Excalibur
+Frost Rifle now requires a Musket/The Undertaker instead of a Megashark
+Holy Weavers require Amphibian Boots instead of Frog Legs
+Nautilus Blade and Bow require Workbenches
+Nautilus Tome requires a Bookcase
+Removed Ancient Bars from the Debuff Gun recipe
+Brightcore is now crafted with 3 Crystal Shards, 1 Soul of Light, and either a Adamantite or Titanium Bar at a HM Forge
+True Enchanted Fury and Terra Blade no longer require Bars of Life
+Replaced Bars of Life with Broken Hero Sword in Elemental Edge recipe
+Removed the Osmium Bars from the Elemental Edge recipe
+Removed Chlorophyte from Terra weapon recipes
+Bars of Life always come last in recipes
+
+[h3]Retiering[/h3]
+Blood Droplets only spawn post-EoC, but are more difficult
+Blood has been retiered to post-EoC
+Amaza now spawns after one mech boss
+Steel moved to post-Mechs
+
+[h3]Drops[/h3]
+Enraged Star now has a 1 in 2 chance of dropping a fallen star
+Asteroid enemies now have a 1 in 5 chance of dropping 1-2 pieces of meteorite
+Slime variants now drop slime drops
+Blood Droplets will now always drop 2-3 bloody drops
+Dripplers, Blood Zombies and Hemoglobin Sharks now have a chance to drop a Bloody Drop post-EoC
+Lunatic Cultist will drop Ancient Bars instead of Ancient Fragments
+Blood Droplets now have a 2% chance to drop a Strawberry
+Blade of the Eater is now additionally dropped by Eater of Souls, but only deals 30 damage
+
+[h3]Tooltips[/h3]
+Updated Hellflame Bow tooltip
+Gave Nautilus weapons tooltips
+Hellfire debuff tooltip now says 'This is fine'
+Sand Blasted! tooltip now says 'Suffering, Pain and Suffering, all in one!'
+Asteroid tooltip now says 'Extraterrestrial flames eat away your body'
+Defense buffs now have a tooltip explaining the reprecussions of using too many
+Gave Feather weapons tooltips
+Gave Iridium Launcher a tooltip
+Shortswords now have a tooltip explaining there unique abilities
+
+[h3]Config[/h3]
+Moved Sprite Settings config to a Personal (ClientSide) Config
+Configs now have a special background color
+Spawn with Starter Bag config no longer requires reload
+
+[h3]Misc.[/h3]
+Steel Bars are now sold by the Steampunker instead of being crafted
+Rewrote Scarab Sword description
+Reformated the description
+Treasure Bags now have Expert rarity
+Added support for Phase Indicator
+Rewrote Desert Spirit bestiary entry
+Made several changes to Gamemodes and activating items
+    Gamemodes are Toggleable
+    They cannot be used while a boss is alive
+Treasure Bags no longer uses an obsolete method, and glows when dropped
+Special item drops from bags no longer use an obsolete method
+The Armor Ability hotkey now presets as 'Q'
+The Galactic Mod's name is no longer colorized
+Added Torches and Rope to the Starter Bag
+Replaced Healing Potions with a Mana Crystal in the Starter Bag
+
+[h2]Fixes and Corrections[/h2]
+Fixed Hellfire Dragon only rarely dropping Hellfire Grenades
+Corrected Hellstorm useStyle
+Fixed Enraged Star dropping
+Corrected Sprit's Wrath tooltip
+Blood Armor is now correctly green rarity
+Fixed the insane damage curve across difficulty modes for Galactic Peril and Asteroid Behemoth
+Fixed Boss Checklist bugs
+Boss music now plays
+Fixed Hellfire Dragon animation
+Amaza Shotgun is now Light Purple rarity
+Asteroid/Iridium bars now swing at a normal speed
+Fixed Steel Weapons not swinging
+Unobtainable items are no longer Researchable
+Fixed a game breaking bug caused by the Old Amaza sprites config
+Corrected Terrager tooltip
+Blade of the Eater drops correctly
+Corrected several hitboxes on projectiles
+Ancient Light projectile makes a more apt sound
+Corrected Debuff Gun size
+Elemental Edge now has a rarity of purple
+Fixed a bug that caused Shortswords to fire the wrong shortsword
+Fixed a bug that caused Shortswords to fire four times instead of once
+Fixed Adamantite Defense being unnamed
+Fixed Hellfire Bars being a rare drop
+Fixed Iridium Blaster firing
+Fixed Asteroid Rifle and Iridium Blaster holding
+Fixed Trophy dropping bug
+Starter Bag now correctly drops items
+Fixed Frost Blade having 2 recipes
+Fixed Frost Sickle being uncraftable
+Corrected Celestial Rune stats
+Desert Artifact now only works in the desert
+Galactic Dashers no longer drop money
+
+[h2]Removals[/h2]
+Removed Dragon Keeper
+Removed Advanced Combat Techniques II
+Removed Lunar and Magic Defense Potions
+Removed Super Explosives, and all 3 Expert Runes
+Removed Lunar Defense, Magic Defense, and Lutetium Guard buffs
+Removed Hallowed Dust, Ancient Fragment, and Shattered Insignia
+Removed Grand Brand, Silver Katana, Blade of Cthulhu, Luminite Sword, and Vile Blade

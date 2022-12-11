@@ -1,0 +1,25 @@
+Beetle Weapons:
+	Beetle Spear (Weevil Poker)
+	Beetle Sword (Scarab Sword)
+
+Shroomite Weapons:
+	Shroomite Cannon (Launcher)
+	Shroomite Rocket Projectile
+	Shroomite Gun "Shroomstick"
+
+Blood:
+	Blood Bow
+	Blood Staff
+
+Accessories:
+	Knife Sheath
+
+Misc:
+	Bone Armor
+	Desert Artifact (summons Desert Spirit)
+	Sword of Cthulhu (dropped by Eye of Cthulhu) (and proj)
+	Vile Blade (dropped by Eater of Worlds) (and proj)
+	Ceramin Blade
+	Coral Armor
+	Lead Boomerang
+	Iron Boomerang

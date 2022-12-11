@@ -1,0 +1,207 @@
+Old Name Color code: [c/00FFFF:]
+
+1.0.4.1 "Burning Death Hotfix"
+Fixed Iridium armor set bonus
+Fixed Dragon Keeper not dropping Dragon Eggs
+Fixed Dragon Keeper animation
+Remade Dragon Keeper AI
+Dragon Keeper is now immune to Poisoned, Oiled, Shadowflame, Cursed Inferno, Frostburn, On Fire, Hellfire
+
+1.0.4 "Burning Death Update"
+** Additions **
+Added Iridium shards and bars
+Added Iridium Sword, Launcher, and Blaster
+Added Asteroid Behemoth boss
+Added Iridium armor
+Added Asteroid Relic
+** Changes **
+Asteroid armor now displays stat changes
+Corrected Asteroid armor rarity
+Feather staff can fire anywhere from 2-5 feathers instead of 3
+Nerfed Asteroid Blaze
+Resprited Dragon Keeper
+* Starter Bag changes *
+Added a config for spawning with the Starter Bag
+Removed Slime Crown, Wooden Sword, Mana Crystal, and Copper Hammer from Starter Bag loot
+Gamemode Activators now spawn in the inventory at the start of the game instead of in the Starter Bag
+Reduced number of healing potions spawned by the Started Bag to 8
+Reduced number of shurikens spawned by the Started Bag to 60
+
+v1.0.3 "Throwing Evolution Pt. 1"
+** Additions **
+Added Asteroid Blaze debuff
+Added Hellfire and Martian Grenades
+Added Hellfire Shuriken and Bee Stinger
+Added Cobalt, Palladium, Mythril, Orichalcum, Adamantite, Titanium, and Bloody Knives
+Added Lihzahrd, Luminite, Night, and Demonic Daggers
+Added Shade Armor
+Added Terrager
+Added Chlorophyte and Asteroid Knives
+** Changes **
+Buffed the Hellfire, Terra Burn, and Spirit's Curse's effects on the player
+Asteroid enemies now inflict Asteroid Blaze
+Resprited Desert Artifact, Ancient Altar, Infinity, Celestial Rune, and Cosmic Edge
+Resprited most Blood weapons
+Removed Blood Staff's extraUpdates
+Changed Cursed Fireball's rarity to pink
+Resprited Space Sword
+Reorginized Starter Bag
+Starter Bag now drops Shurikens
+Resprited Throwing Axes
+Molten Throwing Axe now glows
+Updated description
+** Fixes **
+Fixed a placement error in Boss Checklist
+Fixed a bug that prematurely killed several projectiles
+
+v1.0.2.2 "Debuff Update"
+Spirit's Curse now has a debuff icon
+Spirit's Curse can now be inflicted on players in PVP
+Terra Burn now has a debuff icon
+Terra Burn can now be inflicted on players in PVP
+Updated Hellfire debuff sprite
+Added Spaz's set, but it is unobtainable
+Added Fire Wizard Hat
+
+v1.0.2.1 "Immunity Hotfix"
+Reduced Cursed Flamethrower damage to 41
+Increased Lion's Roar light and changed the light to Yellow
+Lion's Roar now releases dust on death
+Reduced Lion's Roar velocity
+Updated Hell's Blaze projectile sprite
+Partially reworked Fire Wizard's attack
+Fire Wizard is now immune to On Fire!
+Hellfire Dragon in now immune to Hellfire (modded debuff) and Spirit's Curse
+Fixed a bug that prevented NPCs from being immune to debuffs
+Frost Wizard is now immune to Frostburn
+Made over 60 enemies immune to Terra Burn
+Made 17 enemies immune to Hellfire (modded debuff)
+Made 34 enemies immune to Spirit's Curse
+Renamed Osmium Strength to Osmium Might
+Changed Zirconium Speed's description to say "The energies of the fallen speed you on your way" instead of "The energies of the dead speed you on your way"
+
+v1.0.2 "The Space Update"
+** Additions **
+Added Stardust
+Added Enraged Star
+Added Asteroid Head and Asteroid Blitzer
+Added Asteroid Bars
+Added Feather Sword, Staff, and Bow
+Added Asteroid Gauntlet, Asteroid Shards, Asteroid Blaster, and Asteroid Rifle
+Added Orion, Canes Venatici, Sagitta, and Star Caller
+Added Star and Asteroid Armors
+** Changes **
+Resprited Cactus Staff, Iron and Lead Boomerangs, Celestial Globe, Coral armor, and Frost Blade
+Bloody Drop now has a tooltip
+Redid Amaza Projectile
+Amaza Shotgun now acts like a shotgun
+Frost Rifle now only fires once per click
+Resprited Fire Wizard
+Gave Fire Wizard, Ice Wizard, Desert Spirit, and Hellfire Dragon bestiary entries
+All Bosses now have BossBestiaryPriority
+Fire Wizard can now spawn in the Underworld
+Partial rework of Hell's Blaze
+Desert Spirit now has a third attack, summoning a random Desert enemy
+** Fixes **
+Cactus Needle now rotates correctly
+Corrected Amaza Pickaxe's pickaxe power
+Fixed a bug that prevented ores from being placed
+Fixed Steel Drill not being held by the Handle
+
+v1.0.1.2 "Galactic Peril Balancing"
+Reduced damage dealt by Galactic Peril's Lightning
+Galactic Peril's attacks deal different amounts of damage in different difficulties
+Fixed a typo in Galactic Dasher's bestiary entry
+Gave Galactic Dasher's immunity to several debuffs
+Resprited Knife Sheath, Starter Bag, Hell's Blaze, and Spectre Tome
+Remade Palm Wand Projectile
+Resprited Palm Wand, Nights Staff, Ceramic Sword, and Mahogany Stave
+Reworked Spirits Wrath
+Reworked Galactic Dasher AI
+Galactic Peril is now spawnable on the Surface
+
+v1.0.1.1 "Rarity Hotfix"
+** Changes **
+Ancient Bar and Tome of Ancient Light have had their rarity turned from Red to Cyan
+Holy Guard and Holy Weavers have both had their rarities turned to Pink
+Celestial Rune rarity has been changed from Pink to Light Purple
+Bar of Life and the Terra weapons had their rarites changed to Lime
+Saxum had its rarity change to Yellow
+All the Celestial weapons had their rarity changed to Red
+Both Vortex Launcher and Galaxy Fragment got Tooltips
+The flamethrowers and Steel Drill's rarities was changed to Pink
+Royal Shield's rarity updated to Blue
+Updated Ancient Altar, Celestial Globe, Catalogue, and The Infinity's rarities to Red
+Changed all of the Frost items rarities to Pink
+Updated Holy Weavers sprite
+Added Holy Weavers animation on body
+Resprited Amaza Blade, Celestial Globe, and Catalogue
+Catalogue can no longer be stood on
+Resprited Cosmic Sun projectile
+Resprited Terra Bow and its projectiles
+Resprited Boreal Wand
+Resprited Cosmic Edge
+** Fixes **
+Fixed a map labeling bug caused by the Celestial Globe
+
+v1.0.1 "Goblin Update"
+** Additions **
+Added Goblin War armor, Goblin Thief armor, Goblin Archer armor, and Goblin armor
+Added Goblin Knife, Goblin Bow, and Goblin Blade
+Added Chaos Sphere
+Added Goblin Sorcerer Robe
+Added Blood Staff
+Added Grand Brand
+Added Goblin Summoner Dress
+Added Cursed Flamethrower and Ichorthrower
+Added Stardust Whip, but made it unobtainable due to bugs
+** Changes **
+Goblin Warriors now have a 1 in 20 chance of dropping one piece of the Goblin War Armor
+Upped the hitbox of the Hellstorm projectile
+Updated Holy Guard and Ancient Light sprites
+Shrunk Bloody Drops sprite
+The Cosmic Edge now requires a Grand Brand to be crafted
+Reduced the number of Shrooms released by the Shroomite Launcher and made it set instead of fluxuating
+Added Galactic Amulet body animation
+Made the Shroomite Rocket partially transparent
+Reskinned all of the Amaza items
+Updated 'The Team' part of the description
+Renamed Amaza Discus to Amaza Chakram
+Corrected spelling of Adamantite Shortsword
+Hardmode Shortswords now behave like 1.4 Shortswords instead of 1.3 ones
+** Fixes **
+Fixed Vanadium Heaume glitch
+Fixed Blade of Cthulhu firing at the wrong times
+Fixed Amaza Shotgun being uncraftable
+Fixed Amaza Blade having 2 recipes
+Fixed Amaza Chakram firing twice
+
+v1.0.0.4
+Updated Blade of Cthulhu and Vile Sword tooltips
+Updated Shroom projectile sprite
+Removed more unused projectiles
+Updated description
+Updated Blade of Cthulhu sprite
+Slowed the speeds of the Amaza Shotgun and Frost Rifle
+
+v1.0.0.3
+Removed Pulse Bow Recipe
+Removed Beetle Yoyo
+Updated Ancient Light, HellRain Projectile sprites
+Updated Vile Sword
+Removed Unused Projectiles
+
+v1.0.0.2
+Fixed a bug that caused an error on use of the Debuff Gun
+The Debuff Gun projectiles now deal the right class' damage
+Reduced Warning Count
+Changed the dusts of the Hellstorm projectile
+Slightly reduced the homing speed of the Hellstorm projectile
+Added Goblin War Helm
+
+v1.0.0.1 "File Size Hotfix"
+File compression, removed unnecessary files
+Gave Prototype Prism a standard rarity instead of a custom one
+Removed unobtainable mount
+Transfered Music files, they weren't working anyway
+Removed bloating files
