@@ -58,8 +58,8 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Boomerangs
 		public override void SetDefaults()
 		{
 			Projectile.DamageType = DamageClass.Throwing;
-			Projectile.CloneDefaults(182);
-			AIType = 182;
+			Projectile.CloneDefaults(52);
+			AIType = 52;
 		}
 	}
 }

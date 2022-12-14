@@ -18,8 +18,8 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
         {
             Item.damage = 70;
             Item.DamageType = DamageClass.Melee;
-            Item.width = 32;
-            Item.height = 32;
+            Item.width = 42;
+            Item.height = 42;
             Item.useTime = 10;
             Item.useAnimation = 10;
             Item.pick = 210;
@@ -39,15 +39,6 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
             recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
-        }
-
-        public override void MeleeEffects(Player player, Rectangle hitbox)
-        {
-            if (Main.rand.NextBool(3))
-            {
-                //Emit dusts when the sword is swung
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.MartianHit);
-            }
         }
     }
 }

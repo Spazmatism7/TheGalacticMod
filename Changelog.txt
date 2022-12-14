@@ -20,7 +20,7 @@ Added Spine Scarf and Crown of the Sky God
 Added Benthic fishing gear
 Added Shade Scale
 Added Desert Spirit Trophy
-Added Hellfire Egg
+Added Hellfire Egg and Mysterious Crystal
 Added Relics
 Added Shroomstick
 Implemented Stardust Whip
@@ -86,6 +86,7 @@ Reworked Galactic Peril into a multi-stage boss fight
 Shade armor now has a unique set bonus
 Storm's Herald now acts like a spear
 Reworked Iridium Blaster
+Enhanced Cursed Fireball
 
 [h3]Rebalances[/h3]
 Steel Bars are now sold for 40 silver
@@ -136,6 +137,7 @@ Cosmic Edge only pierces 99 times instead of 10000 times
 Asteroid Gauntlet is twice as fast, autoswings, deals double damage, but no longer creates a shockwave
 Shroom Blaster has increased stats, but slower speeds, and converts bullets into Shroomite Bullets
 Vortex Launcher has more rockets avaliable, and will chose explosive rockets if explosive ammo is chosen
+Boomerang!! now autoswings
 
 [h3]Graphic Changes[/h3]
 Resprited Titanium Shortsword
@@ -176,6 +178,9 @@ Resprited Meteor Throwing Axe
 Resprited Blood Saber and Blood Armor to match blood weapon theme
 Altered Sere Bow sprite
 Updated Asteroid Punch sprite
+Extended Amaza Pickaxe handle
+Made Beetle Pickaxe far larger and removed dust effects
+Removed dust effects from Beetle Hamaxe
 
 [h3]Renaming[/h3]
 Renamed Lions Roar to Lion's Roar
@@ -297,6 +302,7 @@ Fixed Frost Sickle being uncraftable
 Corrected Celestial Rune stats
 Desert Artifact now only works in the desert
 Galactic Dashers no longer drop money
+Iron, Lead, and Steel Boomerangs no longer home
 
 [h2]Removals[/h2]
 Removed Dragon Keeper

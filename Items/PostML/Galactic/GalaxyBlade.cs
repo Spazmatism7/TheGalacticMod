@@ -8,6 +8,7 @@ using Terraria.GameContent.Creative;
 using GalacticMod.Assets.Rarities;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.Audio;
 
 namespace GalacticMod.Items.PostML.Galactic
 {
@@ -116,20 +117,13 @@ namespace GalacticMod.Items.PostML.Galactic
 			Projectile.velocity *= 0.75f;
 		}
 
-		public override void Kill(int timeLeft)
-		{
-			for (int i = 0; i < 16; i++)
-			{
-				Dust d = Dust.NewDustPerfect(Projectile.Center, 181);
-				d.frame.Y = 0;
-				d.velocity *= 2;
-			}
+        public override void Kill(int timeLeft)
+        {
+            SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.position);
 
-			Vector2 perturbedSpeed = new Vector2(0, -7).RotatedByRandom(MathHelper.ToRadians(360));
-			Projectile.NewProjectile(null, new Vector2(Projectile.Center.X, Projectile.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<GalacticBoom>(), Projectile.damage, 0, Projectile.owner);
-			//Projectile.GetProjectileSource_FromThis()
-		}
-	}
+            Projectile.NewProjectile(null, new Vector2(Projectile.Center.X, Projectile.Center.Y), new Vector2(0), ProjectileType<GFBoom>(), Projectile.damage, 0, Projectile.owner);
+        }
+    }
 
 	internal class GalaxySpear : ModProjectile
 	{
