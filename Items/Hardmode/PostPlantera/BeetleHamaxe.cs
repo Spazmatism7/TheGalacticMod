@@ -39,14 +39,5 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
-
-        public override void MeleeEffects(Player player, Rectangle hitbox)
-        {
-            if (Main.rand.NextBool(3))
-            {
-                //Emit dusts when the sword is swung
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.MartianHit);
-            }
-        }
     }
 }

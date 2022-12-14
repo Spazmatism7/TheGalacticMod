@@ -28,7 +28,7 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Misc
 			Item.UseSound = SoundID.Item13;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.shootSpeed = 8f;
-			Item.useAnimation = 20;
+			Item.useAnimation = 17;
 			Item.shoot = ProjectileType<CFP>();
 			Item.DamageType = DamageClass.Throwing;
 
@@ -42,7 +42,7 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Misc
 		}
 	}
 
-	internal class CFP : ModProjectile
+	public class CFP : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -51,8 +51,8 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Misc
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 16;
-			Projectile.height = 16;
+			Projectile.width = 14;
+			Projectile.height = 14;
 			Projectile.friendly = true;
 			Projectile.timeLeft /= 2;
 			Projectile.penetrate = 8;
@@ -60,43 +60,27 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Misc
 			Projectile.light = 3f;
 		}
 
-		public override void AI()
-		{
-			Projectile.velocity.Y += Projectile.ai[0];
-		}
-
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			Projectile.penetrate--;
-			if (Projectile.penetrate <= 0)
-			{
-				Projectile.Kill();
-			}
-			else
-			{
-				Projectile.ai[0] += 0.1f;
-				if (Projectile.velocity.X != oldVelocity.X)
-				{
-					Projectile.velocity.X = -oldVelocity.X;
-				}
-				if (Projectile.velocity.Y != oldVelocity.Y)
-				{
-					Projectile.velocity.Y = -oldVelocity.Y;
-				}
-				Projectile.velocity *= 0.75f;
-				SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
-			}
-			return false;
-		}
+        public override void AI()
+        {
+            Projectile.velocity.Y += Projectile.ai[0];
+            int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.CursedTorch, Projectile.velocity.X, Projectile.velocity.Y, 130, default, 2f); 
+            Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+            Main.dust[dust].velocity *= -0.3f;
+        }
 
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item25, Projectile.position);
 		}
 
-		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            target.AddBuff(BuffID.CursedInferno, 12000);
+        }
+
+        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 		{
-			target.AddBuff(39, 12000);
+			target.AddBuff(BuffID.CursedInferno, 12000);
 		}
 	}
 

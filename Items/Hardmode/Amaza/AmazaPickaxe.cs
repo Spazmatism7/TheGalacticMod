@@ -20,8 +20,8 @@ namespace GalacticMod.Items.Hardmode.Amaza
         {
             Item.damage = 72;
             Item.DamageType = DamageClass.Melee; //melee weapon
-            Item.width = 40;
-            Item.height = 40;
+            Item.width = 44;
+            Item.height = 44;
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.pick = 190;

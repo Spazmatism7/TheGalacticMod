@@ -110,6 +110,9 @@ namespace GalacticMod.NPCs.Bosses.PreHM
                             num9 = NPCType<JormungandrBody>();
                             switch (l)
                             {
+                                case 0 or 2 or 4 or 6 or 8 or 10 or 12 or 14 or 16 or 18 or 20 or 22 or 24 or 26 or 28 or 30 or 32 or 34 or 36 or 38 or 40 or 42 or 44 or 46 or 48 or 50 or 52 or 54 or 56 or 58 or 60 or 62 or 64 or 66 or 68 or 70:
+                                    num9 = NPCType<JormungandrBody_Spine>();
+                                    break;
                                 case 71:
                                     num9 = NPCType<JormungandrTail>();
                                     break;
@@ -354,6 +357,83 @@ namespace GalacticMod.NPCs.Bosses.PreHM
                 NPC.HitEffect(0, 10.0);
                 NPC.active = false;
             }
+        }
+    }
+
+    public class JormungandrBody_Spine : ModNPC
+    {
+        int timer;
+        int spineTimer;
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Jörmungandr");
+
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                Hide = true
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
+        }
+
+        public override void SetDefaults()
+        {
+            NPC.width = 62;
+            NPC.height = 46;
+
+            NPC.aiStyle = NPCAIStyleID.TheDestroyer;
+            NPC.boss = true;
+
+            NPC.damage = 40;
+            NPC.defense = 8;
+            NPC.lifeMax = 14000;
+
+            NPC.noGravity = true;
+            NPC.noTileCollide = true;
+
+            NPC.HitSound = SoundID.NPCHit7;
+            NPC.DeathSound = SoundID.NPCDeath8;
+
+            NPC.knockBackResist = 0.0f;
+
+            NPC.netAlways = true;
+            NPC.dontCountMe = true;
+        }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => new bool?(false);
+
+        public override void AI()
+        {
+            timer++;
+            spineTimer++;
+
+            if (timer < 3 * 60)
+            {
+                NPC.immortal = true;
+                NPC.dontTakeDamage = true;
+            }
+            else
+            {
+                NPC.immortal = false;
+                NPC.dontTakeDamage = false;
+            }
+
+            if (!Main.npc[(int)NPC.ai[1]].active)
+            {
+                NPC.life = 0;
+                NPC.HitEffect(0, 10.0);
+                NPC.active = false;
+            }
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            if (Main.masterMode)
+                target.AddBuff(BuffID.Venom, 12 * 60);
+            else if (Main.expertMode)
+                target.AddBuff(BuffID.Venom, 7 * 60);
+            else if (!Main.expertMode)
+                target.AddBuff(BuffID.Poisoned, 7 * 60);
         }
     }
 
