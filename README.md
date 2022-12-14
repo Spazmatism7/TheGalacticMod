@@ -1,6 +1,8 @@
 # The Galactic Mod
 The Galactic Mod is a small content mod I've been working on for a while. It aims to add content where we feel the game needs more. This mod's goal is to flesh out underwhelming parts of the game. We also aim to improve the Terraria experience, and make each experience a fresh one.
 
+Note: the code on this GitHub repository will be ahead of the current released version.
+
 ## Download
 The Galactic Mod for tMod Alpha 1.4 Mod can be downloaded from here: https://steamcommunity.com/sharedfiles/filedetails/?id=2838158305
 
