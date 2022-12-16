@@ -6,6 +6,7 @@ using static Terraria.ModLoader.ModContent;
 using System;
 using System.Threading.Tasks;
 using Terraria.GameContent.Creative;
+using GalacticMod.Items.PreHM.Nautilus;
 
 namespace GalacticMod.Items.Hardmode.PostPlantera
 {
@@ -21,7 +22,7 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 		public override void SetDefaults()
 		{
 			Item.damage = 84;
-			Item.useStyle = ItemUseStyleID.Thrust;
+			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useAnimation = 18;
 			Item.useTime = 24;
 			Item.shootSpeed = 3.7f;
@@ -38,12 +39,12 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 			Item.autoReuse = true; // Most spears don't autoReuse, but it's possible when used in conjunction with CanUseItem()
 
 			Item.UseSound = SoundID.Item1;
-			Item.shoot = ModContent.ProjectileType<BeetleSpearP>();
+			Item.shoot = ProjectileType<BeetleSpearP>();
 		}
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = Recipe.Create(ModContent.ItemType<BeetleSpear>());
+			Recipe recipe = Recipe.Create(ItemType<BeetleSpear>());
 			recipe.AddIngredient(ItemID.BeetleHusk, 13);
 			recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
 			recipe.AddTile(TileID.MythrilAnvil);
@@ -73,67 +74,76 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 			DisplayName.SetDefault("Beetle Spear");
 		}
 
-		public override void SetDefaults()
-		{
-			Projectile.width = 18;
-			Projectile.height = 18;
-			Projectile.aiStyle = 19;
-			Projectile.penetrate = -1;
-			Projectile.scale = 1.3f;
-			Projectile.alpha = 0;
+        public override void SetDefaults()
+        {
+            Projectile.width = 10;
+            Projectile.height = 10;
+            Projectile.aiStyle = 19;
+            Projectile.penetrate = -1;
+            Projectile.scale = 1f;
+            Projectile.alpha = 0;
 
-			Projectile.hide = true;
-			Projectile.ownerHitCheck = true;
-			Projectile.DamageType = DamageClass.Melee;
-			Projectile.tileCollide = false;
-			Projectile.friendly = true;
-		}
+            Projectile.hide = true;
+            Projectile.ownerHitCheck = true;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.tileCollide = false;
+            Projectile.friendly = true;
 
-		public float movementFactor
-		{
-			get => Projectile.ai[0];
-			set => Projectile.ai[0] = value;
-		}
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
+        }
 
-		public override void AI()
-		{
-			Player projOwner = Main.player[Projectile.owner];
-			Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
-			Projectile.direction = projOwner.direction;
-			projOwner.heldProj = Projectile.whoAmI;
-			projOwner.itemTime = projOwner.itemAnimation;
-			Projectile.position.X = ownerMountedCenter.X - (float)(Projectile.width / 2);
-			Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2);
-			if (!projOwner.frozen)
-			{
-				if (movementFactor == 0f)
-				{
-					movementFactor = 3f;
-					Projectile.netUpdate = true;
-				}
-				if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3)
-				{
-					movementFactor -= 2.4f;
-				}
-				else
-				{
-					movementFactor += 2.1f;
-				}
-			}
-			Projectile.position += Projectile.velocity * movementFactor;
-			if (projOwner.itemAnimation == 0)
-			{
-				Projectile.Kill();
-			}
-			Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(135f);
-			if (Projectile.spriteDirection == -1)
-			{
-				Projectile.rotation -= MathHelper.ToRadians(90f);
-			}
+        protected virtual float HoldoutRangeMin => 25f;
+
+        protected virtual float HoldoutRangeMax => 100f;
+
+        public override void AI()
+        {
+            Player player = Main.player[Projectile.owner]; // Since we access the owner player instance so much, it's useful to create a helper local variable for this
+            int duration = player.itemAnimationMax; // Define the duration the projectile will exist in frames
+
+            player.heldProj = Projectile.whoAmI; // Update the player's held projectile id
+
+            // Reset projectile time left if necessary
+            if (Projectile.timeLeft > duration)
+            {
+                Projectile.timeLeft = duration;
+            }
+
+            Projectile.velocity = Vector2.Normalize(Projectile.velocity); // Velocity isn't used in this spear implementation, but we use the field to store the spear's attack direction.
+
+            float halfDuration = duration * 0.5f;
+            float progress;
+
+            // Here 'progress' is set to a value that goes from 0.0 to 1.0 and back during the item use animation.
+            if (Projectile.timeLeft < halfDuration)
+            {
+                progress = Projectile.timeLeft / halfDuration;
+            }
+            else
+            {
+                progress = (duration - Projectile.timeLeft) / halfDuration;
+            }
+
+            // Move the projectile from the HoldoutRangeMin to the HoldoutRangeMax and back, using SmoothStep for easing the movement
+            Projectile.Center = player.MountedCenter + Vector2.SmoothStep(Projectile.velocity * HoldoutRangeMin, Projectile.velocity * HoldoutRangeMax, progress);
+
+            // Apply proper rotation to the sprite.
+            if (Projectile.spriteDirection == -1)
+            {
+                // If sprite is facing left, rotate 45 degrees
+                Projectile.rotation += MathHelper.ToRadians(45f);
+            }
+            else
+            {
+                // If sprite is facing right, rotate 135 degrees
+                Projectile.rotation += MathHelper.ToRadians(135f);
+            }
+
 			SummonBeetleBolt();
-		}
+        }
 
-		private int damageBeam = 60;
+        private int damageBeam = 60;
 
 		private void SummonBeetleBolt()
         {
@@ -142,13 +152,12 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 				return;
 			}
 			Projectile.localAI[0] = 1000f;
-			Vector2 center = Projectile.Center;
-			Vector2 zero = Vector2.Zero;
 			int num = Main.rand.Next(2) * 2 - 1;
-			Vector2 vector = new Vector2((float)num * (4f + (float)Main.rand.Next(3)), 0f);
-			Vector2 vector2 = center + new Vector2(-num * 120, 0f);
-			vector += (center + zero * 15f - vector2).SafeNormalize(Vector2.Zero) * 2f;
-			Projectile.NewProjectile(Projectile.GetSource_FromThis(), vector2, vector, ModContent.ProjectileType<BeetleBeam>(), damageBeam, 0f, Projectile.owner);
+			Vector2 vector = new Vector2(num * (4f + Main.rand.Next(3)), 0f);
+            Vector2 vector2 = Projectile.Center + new Vector2(-num * 120, 0f);
+			vector += (Projectile.Center + Vector2.Zero * 15f - vector2).SafeNormalize(Vector2.Zero) * 2f;
+            Vector2 velocity = Main.rand.Next(new Vector2[] { Projectile.velocity, Projectile.velocity * 2, Projectile.velocity / 2, vector, vector, vector / 2, vector * 2 });
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), vector2, velocity, ProjectileType<BeetleBeam>(), damageBeam, 0f, Projectile.owner);
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -171,15 +180,29 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 			Projectile.light = 3f;
 			Projectile.scale = 1.1f;
 			Projectile.penetrate = -1;
+			Projectile.timeLeft = 180;
 			Projectile.DamageType = DamageClass.Melee;
 			Projectile.spriteDirection = Projectile.direction;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void AI()
+        {
+            Lighting.AddLight(Projectile.Center, Color.Yellow.ToVector3() * 0.78f);
+
+            Projectile.direction = Projectile.spriteDirection = (Projectile.velocity.X > 0f) ? 1 : -1;
+
+            Projectile.rotation = Projectile.velocity.ToRotation();
+            if (Projectile.spriteDirection == -1)
+            {
+                Projectile.rotation += MathHelper.Pi;
+            }
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			Player player = Main.player[Projectile.owner];
 
-			player.AddBuff(ModContent.BuffType<Buffs.BeetleBuff>(), 120);
+			player.AddBuff(BuffType<Buffs.BeetleBuff>(), 120);
 		}
 	}
 }

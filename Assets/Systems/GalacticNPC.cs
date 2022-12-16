@@ -98,22 +98,22 @@ namespace GalacticMod.Assets.Systems
 
             if (TerraBurn)
             {
-                int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.TerraBlade, npc.velocity.X * 1.2f, npc.velocity.Y * 1.2f, 0, default, 2.5f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.TerraBlade, npc.velocity.X * 1.2f, npc.velocity.Y * 1.1f, 0, default, 2.5f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
                 Main.dust[dust].noGravity = true; //this make so the dust has no gravity
 
-                int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Chlorophyte, npc.velocity.X, -1, 0, default, 1f);
+                int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Chlorophyte, npc.velocity.X, -1, 0, default, 0.8f);
                 Main.dust[dust2].noGravity = true; //this make so the dust has no gravity
             }
 
             if (LunarBurn)
             {
-                int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Vortex, npc.velocity.X, npc.velocity.Y, 0, default, 2f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Vortex, npc.velocity.X, npc.velocity.Y, 0, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
                 Main.dust[dust].noGravity = true; //this make so the dust has no gravity
 
-                int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Electric, npc.velocity.X, npc.velocity.Y, 0, default, 2f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Electric, npc.velocity.X, npc.velocity.Y, 0, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
                 Main.dust[dust2].noGravity = true; //this make so the dust has no gravity
 
-                int dust3 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.FishronWings, npc.velocity.X, -1, 0, default, 2.5f);
+                int dust3 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.FishronWings, npc.velocity.X, -1, 0, default, 1.25f);
                 Main.dust[dust3].noGravity = true; //this make so the dust has no gravity
             }
             if (asteroidBlaze)

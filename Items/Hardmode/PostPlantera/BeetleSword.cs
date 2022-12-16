@@ -22,8 +22,8 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 			Item.DamageType = DamageClass.Melee; //melee weapon
 			Item.width = 46;
 			Item.height = 48;
-			Item.useTime = 20;
-			Item.useAnimation = 20;
+			Item.useTime = 30;
+			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 6;
 			Item.value = 1000; //sell value
@@ -33,34 +33,16 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 			Item.useTurn = true; //player can turn while animation is happening
 
 			Item.shoot = ProjectileType<FlareBolt>();
-			Item.shootSpeed = 3f;
+			Item.shootSpeed = 6f;
 		}
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = Recipe.Create(ModContent.ItemType<BeetleSword>());
+			Recipe recipe = Recipe.Create(ItemType<BeetleSword>());
 			recipe.AddIngredient(ItemID.BeetleHusk, 13);
 			recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
-		}
-
-		public override void MeleeEffects(Player player, Rectangle hitbox)
-		{
-			if (Main.rand.NextBool(2))
-			{
-				//Emit dusts when the sword is swung
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.RuneWizard);
-			}
-		}
-
-		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-		{
-			Vector2 bladeOffset = Vector2.Normalize(velocity) * 25f;
-			if (Collision.CanHit(position, 0, 0, position + bladeOffset, 0, 0))
-			{
-				position += bladeOffset;
-			}
 		}
 	}
 
@@ -77,7 +59,7 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 			Projectile.penetrate = 10;
 			Projectile.DamageType = DamageClass.Melee;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 1;
+            Projectile.localNPCHitCooldown = 4;
         }
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)

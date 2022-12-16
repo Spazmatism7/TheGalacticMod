@@ -69,10 +69,10 @@ namespace GalacticMod.Buffs
         {
             player.GetModPlayer<GalacticPlayer>().terraBurn = true;
 
-            int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.TerraBlade, player.velocity.X * 1.2f, player.velocity.Y * 1.2f, 0, default, 2.5f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+            int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.TerraBlade, player.velocity.X * 1.2f, player.velocity.Y * 1.1f, 0, default, 2.5f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
             Main.dust[dust].noGravity = true; //this make so the dust has no gravity
 
-            int dust2 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.Chlorophyte, player.velocity.X, -1, 0, default, 1f);
+            int dust2 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.Chlorophyte, player.velocity.X, -1, 0, default, 0.8f);
             Main.dust[dust2].noGravity = true; //this make so the dust has no gravity
         }
 
@@ -95,13 +95,13 @@ namespace GalacticMod.Buffs
         {
             player.GetModPlayer<GalacticPlayer>().spiritCurse = true;
 
-            int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.Vortex, player.velocity.X, player.velocity.Y, 0, default, 2f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+            int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.Vortex, player.velocity.X, player.velocity.Y, 0, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
             Main.dust[dust].noGravity = true; //this make so the dust has no gravity
 
-            int dust2 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.Electric, player.velocity.X, player.velocity.Y, 0, default, 2f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+            int dust2 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.Electric, player.velocity.X, player.velocity.Y, 0, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
             Main.dust[dust2].noGravity = true; //this make so the dust has no gravity
 
-            int dust3 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.FishronWings, player.velocity.X, -1, 0, default, 2.5f);
+            int dust3 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.FishronWings, player.velocity.X, -1, 0, default, 1.25f);
             Main.dust[dust3].noGravity = true; //this make so the dust has no gravity
         }
 

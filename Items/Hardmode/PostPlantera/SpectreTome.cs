@@ -58,6 +58,7 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 			Projectile.timeLeft /= 2;
 			Projectile.penetrate = 10;
 			Projectile.DamageType = DamageClass.Magic;
+			Projectile.light = 1.5f;
 		}
 
 		public override void AI()
