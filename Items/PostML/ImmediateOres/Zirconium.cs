@@ -34,7 +34,7 @@ namespace GalacticMod.Items.PostML.ImmediateOres
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = Recipe.Create(ModContent.ItemType<Zirconium>());
+			Recipe recipe = Recipe.Create(ItemType<Zirconium>());
 			recipe.AddIngredient(Mod, "ZirconiumOre", 4);
 			recipe.AddTile(TileID.Autohammer); //Autohammer
 			recipe.Register();

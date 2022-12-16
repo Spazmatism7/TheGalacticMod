@@ -23,19 +23,20 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Boomerangs
 			Item.damage = 69;
 			Item.noMelee = true;
 
-			Item.useTime = 35;
+			Item.useTime = 40;
 			Item.DamageType = DamageClass.Throwing;
 			Item.useAnimation = 40;
-			Item.useStyle = 5;
+			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 0;
 			Item.value = 9000;
-			Item.rare = 5;
+			Item.rare = ItemRarityID.Pink;
 			Item.UseSound = SoundID.Item1;
 			Item.noUseGraphic = true;
 			Item.width = 18;
 			Item.height = 32;
 
-			Item.shoot = ModContent.ProjectileType<SteelBoomerangProj>();
+			Item.autoReuse = true;
+			Item.shoot = ProjectileType<SteelBoomerangProj>();
 			Item.shootSpeed = 12f;
 			Item.channel = true;
 		}
@@ -47,9 +48,9 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Boomerangs
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = Recipe.Create(ModContent.ItemType<SteelBoomerang>());
+			Recipe recipe = Recipe.Create(ItemType<SteelBoomerang>());
 			recipe.AddIngredient(Mod, "SteelBar", 12);
-			recipe.AddTile(134);
+			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}
 	}
@@ -64,8 +65,8 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Boomerangs
 		public override void SetDefaults()
 		{
 			Projectile.DamageType = DamageClass.Throwing;
-			Projectile.CloneDefaults(182);
-			AIType = 182;
+			Projectile.CloneDefaults(52);
+			AIType = 52;
 		}
 	}
 }

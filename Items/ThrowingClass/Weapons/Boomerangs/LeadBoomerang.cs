@@ -23,17 +23,17 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Boomerangs
 
 			Item.useTime = 40;
 			Item.useAnimation = 40;
-			Item.useStyle = 5;
+			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 0;
 			Item.value = 9000;
-			Item.rare = 1;
+			Item.rare = ItemRarityID.Blue;
 			Item.UseSound = SoundID.Item1;
 			Item.noUseGraphic = true;
 			Item.width = 18;
 			Item.height = 32;
 
 			//item.autoReuse = true;
-			Item.shoot = ModContent.ProjectileType<LeadBoomerangProj>();
+			Item.shoot = ProjectileType<LeadBoomerangProj>();
 			Item.shootSpeed = 13f;
 			Item.channel = true;
 		}
@@ -47,7 +47,7 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Boomerangs
 		{
 			Recipe recipe = Recipe.Create(ModContent.ItemType<LeadBoomerang>());
 			recipe.AddIngredient(ItemID.LeadBar, 12);
-			recipe.AddTile(16);
+			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
 	}
@@ -57,9 +57,9 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Boomerangs
 		public override void SetDefaults()
 		{
 			Projectile.DamageType = DamageClass.Throwing;
-			Projectile.CloneDefaults(182);
+			Projectile.CloneDefaults(52);
 			// projectile.aiStyle = 3; This line is not needed since CloneDefaults sets it.
-			AIType = 182;
+			AIType = 52;
 		}
 	}
 }
