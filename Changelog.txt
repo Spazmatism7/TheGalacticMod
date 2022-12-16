@@ -313,7 +313,7 @@ Desert Artifact now only works in the desert
 Galactic Dashers no longer drop money
 Iron, Lead, and Steel Boomerangs no longer home
 Spears now use the correct use style
-Shadowshot now has the correct rarit
+Shadowshot now has the correct rarity
 
 [h2]Removals[/h2]
 Removed Dragon Keeper
