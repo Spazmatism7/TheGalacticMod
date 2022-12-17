@@ -139,4 +139,34 @@ namespace GalacticMod.Buffs
             Main.debuff[Type] = true;
         }
     }
+
+    public class GraniteCoreBuff : ModBuff
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Granite Stasis");
+            Description.SetDefault("You can no longer take damage, but you cannot move");
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.velocity.X *= 0f;
+            player.velocity.Y *= 0f;
+            player.extraFall = 20;
+            player.iceSkate = false;
+            player.endurance = 100f;
+            player.noKnockback = true;
+            player.lifeRegen = 0;
+            player.GetDamage(DamageClass.Generic) -= 1f;
+            player.GetDamage(DamageClass.Default) -= 1f;
+            player.GetDamage(DamageClass.Melee) -= 1f;
+            if (Main.rand.NextBool(4))
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, DustID.Granite, player.velocity.X, player.velocity.Y, 0, default, 1.5f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+            }
+        }
+    }
 }

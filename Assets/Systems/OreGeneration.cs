@@ -30,6 +30,7 @@ namespace GalacticMod.Assets.Systems
             hasGeneratedIOres = false;
             hasGennedStorm = false;
         }
+
         public override void SaveWorldData(TagCompound tag)
         {
             tag["gennedCarbon"] = hasGeneratedCarbonite;
@@ -45,6 +46,7 @@ namespace GalacticMod.Assets.Systems
             hasGeneratedIOres = tag.GetBool("gennedIOres");
             hasGennedStorm = tag.GetBool("gennedStorm");
         }
+
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
@@ -54,6 +56,7 @@ namespace GalacticMod.Assets.Systems
             flags[3] = hasGennedStorm;
             writer.Write(flags);
         }
+
         public override void NetReceive(BinaryReader reader)
         {
             BitsByte flags = reader.ReadByte();
@@ -62,6 +65,7 @@ namespace GalacticMod.Assets.Systems
             hasGeneratedIOres = flags[2];
             hasGennedStorm = flags[3];
         }
+
         public override void PreUpdateWorld()
         {
             if (!GetInstance<GalacticModConfig>().PreventOreSpawn)

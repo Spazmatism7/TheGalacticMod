@@ -40,7 +40,7 @@ namespace GalacticMod.Items.PreHM.Mage
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = Recipe.Create(ItemType<NightStaff>());
+			Recipe recipe = Recipe.Create(ItemType<MagmaWand>());
 			recipe.AddIngredient(ItemID.HellstoneBar, 12);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();

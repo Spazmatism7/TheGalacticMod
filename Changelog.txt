@@ -28,6 +28,7 @@ Added Sirocco
 Added Soul Shard in the place of Shattered Insignias
 Added Shroomite Bullet
 Added Tide Turner
+Added Granite Core accessory
 
 [h3]NPCs[/h3]
 Added a new Pre-Hardmode boss, Sky God
@@ -35,6 +36,7 @@ Added Baby Dragon
 Added Bloody Aglamation
 Added a new miniboss the Mythical Wyvern
 Added a late Pre-Hardmode boss, Jörmungandr
+Added Toxotai and Granite Core
 
 [h3]Buffs[/h3]
 Added Infested debuff
@@ -143,6 +145,7 @@ Boomerang!! now autoswings
 Beetle Sword useTime increased from 20 to 30, but shootSpeed doubled
 Weevil Poker projectiles now die after 3 seconds
 Hellfire Arrows fired from Shadowshot now have 2.5x knockback
+Icy Crypt is bigger, but no longer fires a projectile from the sky
 
 [h3]Graphic Changes[/h3]
 Resprited Titanium Shortsword
@@ -189,6 +192,8 @@ Removed dust effects from Beetle Hamaxe and Beetle Sword
 Weevil Poker projectiles face the way they're fired
 Spectre Bolts give off light
 Spectre Curse and Terra Burn debuffs gives off less dust
+Shortened Amaza Blade handle, but lengthed the blade
+Frost Blade blade is longer
 
 [h3]Renaming[/h3]
 Renamed Lions Roar to Lion's Roar
@@ -314,12 +319,13 @@ Galactic Dashers no longer drop money
 Iron, Lead, and Steel Boomerangs no longer home
 Spears now use the correct use style
 Shadowshot now has the correct rarity
+Fixed a bug with Magma Wand recipe
 
 [h2]Removals[/h2]
-Removed Dragon Keeper
 Removed Advanced Combat Techniques II
 Removed Lunar and Magic Defense Potions
 Removed Super Explosives, and all 3 Expert Runes
+Removed Dragon Keeper, Silver Slime, and Orange Slime
 Removed Lunar Defense, Magic Defense, and Lutetium Guard buffs
 Removed Hallowed Dust, Ancient Fragment, and Shattered Insignia
 Removed Grand Brand, Silver Katana, Blade of Cthulhu, Luminite Sword, and Vile Blade

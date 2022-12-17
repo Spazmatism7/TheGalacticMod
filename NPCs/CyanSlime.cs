@@ -14,9 +14,9 @@ using Terraria.GameContent.ItemDropRules;
 using GalacticMod.Assets.Config;
 using GalacticMod.Items.PostML.Hellfire;
 
-namespace GalacticMod.NPCs.Variants
+namespace GalacticMod.NPCs
 {
-	public class SilverSlime : ModNPC
+	public class CyanSlime : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
@@ -27,9 +27,9 @@ namespace GalacticMod.NPCs.Variants
 		{
 			NPC.width = 32;
 			NPC.height = 22;
-			NPC.damage = 20;
+			NPC.damage = 15;
 			NPC.defense = 5;
-			NPC.lifeMax = 69;
+			NPC.lifeMax = 50;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath2;
 			NPC.value = 60f;
@@ -44,11 +44,11 @@ namespace GalacticMod.NPCs.Variants
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			if (!GetInstance<GalacticModConfig>().NoWeirdoBlobs)
-			{
+            {
 				return SpawnCondition.OverworldDaySlime.Chance * 0.05f;
 			}
 			else
-            {
+			{
 				return SpawnCondition.OverworldDaySlime.Chance * 0f;
 			}
 		}

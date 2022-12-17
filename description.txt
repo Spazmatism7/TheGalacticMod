@@ -5,10 +5,10 @@ It adds 300 new items for you to explore; including weapons, accessories, armors
 
 The Galactic Mod adds:
  - 7 new potions
- - 14 new accessories
+ - 15 new accessories
  - 4 new crafting stations
  - 15 new armor sets with unique set bonuses
- - 2 new pets
+ - 4 new pets
  - 11 new enemies
  - 5 new Bosses
  - 2 new Gamemodes (Blood Mode and No Hit)

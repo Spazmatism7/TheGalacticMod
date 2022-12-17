@@ -18,8 +18,8 @@ namespace GalacticMod.Items.Hardmode.Frost
 		{
 			Item.damage = 58;
 			Item.DamageType = DamageClass.Melee; //melee weapon
-			Item.width = 58;
-			Item.height = 64;
+			Item.width = 62;
+			Item.height = 68;
 			Item.useTime = 20;
 			Item.useAnimation = 20;
 			Item.useStyle = ItemUseStyleID.Swing;
