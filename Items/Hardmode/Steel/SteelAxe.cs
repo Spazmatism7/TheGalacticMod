@@ -25,6 +25,7 @@ namespace GalacticMod.Items.Hardmode.Steel
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6;
             Item.rare = ItemRarityID.Pink;
+            Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
         }
 

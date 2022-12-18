@@ -20,8 +20,8 @@ namespace GalacticMod.Items.Hardmode.PostPlantera
 
 		public override void SetDefaults()
 		{
-			Item.width = 44;
-			Item.height = 48;
+			Item.width = 48;
+			Item.height = 52;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 20;
 			Item.useAnimation = 20;

@@ -27,6 +27,7 @@ namespace GalacticMod.Items.Hardmode.Amaza
             Item.axe = 175;          //How much axe power the weapon has, note that the axe power displayed in-game is this value multiplied by 5
             Item.hammer = 100;      //How much hammer power the weapon has
             Item.useStyle = ItemUseStyleID.Swing;
+            Item.UseSound = SoundID.Item1;
             Item.knockBack = 6;
             Item.rare = ItemRarityID.LightPurple;
             Item.autoReuse = true;

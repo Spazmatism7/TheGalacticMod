@@ -20,8 +20,8 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Axes
 		{
 			Item.damage = 19;
 			Item.rare = ItemRarityID.Orange;
-			Item.width = 30;
-			Item.height = 26;
+			Item.width = 34;
+			Item.height = 30;
 			Item.useTime = 20;
 			Item.UseSound = SoundID.Item13;
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -61,8 +61,8 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Axes
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 30;
-			Projectile.height = 26;
+			Projectile.width = 34;
+			Projectile.height = 30;
 			Projectile.friendly = true;
 			Projectile.penetrate = -1;
 			Projectile.aiStyle = 0;

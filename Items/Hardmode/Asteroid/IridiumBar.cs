@@ -13,6 +13,7 @@ namespace GalacticMod.Items.Hardmode.Asteroid
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+            Tooltip.SetDefault("You can see the stars reflecting of it's surface");
         }
 
         public override void SetDefaults()
@@ -45,6 +46,7 @@ namespace GalacticMod.Items.Hardmode.Asteroid
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+            Tooltip.SetDefault("You can feel the stars");
         }
 
         public override void SetDefaults()

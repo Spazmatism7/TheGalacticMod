@@ -78,6 +78,8 @@ namespace GalacticMod.Projectiles.Dev
 
         public override void Kill(int timeLeft)
         {
+            SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
+
             for (int i = 0; i < 12; i++)
             {
                 Dust d = Dust.NewDustPerfect(Projectile.Center, 219);

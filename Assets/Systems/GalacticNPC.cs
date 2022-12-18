@@ -27,6 +27,7 @@ namespace GalacticMod.Assets.Systems
         public bool truffle;
         public bool stunned;
         public bool elementalBlaze;
+        public bool nebulaFlame;
 
         public override void ResetEffects(NPC npc)
         {
@@ -39,6 +40,7 @@ namespace GalacticMod.Assets.Systems
             truffle = false;
             stunned = false;
             elementalBlaze = false;
+            nebulaFlame = false;
         }
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
@@ -82,6 +84,11 @@ namespace GalacticMod.Assets.Systems
             {
                 npc.lifeRegen -= 95;
                 damage = 45;
+            }
+            if (nebulaFlame)
+            {
+                npc.lifeRegen -= 90;
+                damage = 40;
             }
         }
 
@@ -147,6 +154,14 @@ namespace GalacticMod.Assets.Systems
 
                 int dust3 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Frost, npc.velocity.X, -1, 0, default, 2.5f);
                 Main.dust[dust3].noGravity = true; //this make so the dust has no gravity
+            }
+
+            if (nebulaFlame)
+            {
+                int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Shadowflame, npc.velocity.X, npc.velocity.Y, 0, default, 2f);
+                Main.dust[dust].noGravity = true;
+                int dust1 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.PinkTorch, npc.velocity.X, npc.velocity.Y, 0, default, 2f);
+                Main.dust[dust1].noGravity = true;
             }
         }
 

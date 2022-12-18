@@ -28,6 +28,7 @@ namespace GalacticMod.Items.Hardmode.Amaza
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6;
             Item.rare = ItemRarityID.LightPurple;
+            Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.tileBoost = 2;
             Item.GetGlobalItem<AoEPickaxe>().miningRadius = 1;

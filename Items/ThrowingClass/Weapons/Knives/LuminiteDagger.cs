@@ -3,6 +3,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Creative;
+using GalacticMod.Items.Swords.CosmicEdgePath;
+using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
 
 namespace GalacticMod.Items.ThrowingClass.Weapons.Knives
 {
@@ -15,29 +18,33 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Knives
 
 		public override void SetDefaults()
 		{
-			Item.damage = 100;
-			Item.rare = ItemRarityID.Lime;
-			Item.width = 10;
-			Item.height = 24;
-			Item.useTime = 20;
-			Item.UseSound = SoundID.Item13;
-			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.shootSpeed = 14f;
-			Item.useAnimation = 20;
-			Item.shoot = ProjectileType<LuminiteDaggerP>();
-			Item.shootSpeed = 8f;
-			Item.DamageType = DamageClass.Throwing;
-
-			// Alter any of these values as you see fit, but you should probably keep useStyle on 1, as well as the noUseGraphic and noMelee bools
-			Item.noUseGraphic = true;
+			Item.damage = 300;
+            Item.width = 10;
+            Item.height = 24;
+            Item.DamageType = DamageClass.Throwing;
+			Item.useTime = 30;
+            Item.useAnimation = 20;
+            Item.crit = 6;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noUseGraphic = true;
 			Item.noMelee = true;
-			Item.autoReuse = true;
+            Item.rare = ItemRarityID.Lime;
+            Item.shoot = ProjectileType<LuminiteDaggerP>();
+            Item.shootSpeed = 16f;
 
-			Item.UseSound = SoundID.Item1;
-			Item.value = Item.sellPrice(silver: 5);
-		}
+            Item.UseSound = SoundID.Item13;
+            Item.value = Item.sellPrice(silver: 5);
+        }
 
-		public override void AddRecipes()
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(0));
+            Projectile.NewProjectile(source, new Vector2(position.X, position.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), type, damage, knockback, player.whoAmI); ;
+
+            return false;
+        }
+
+        public override void AddRecipes()
 		{
 			Recipe recipe = Recipe.Create(ItemType<LuminiteDagger>());
 			recipe.AddIngredient(ItemID.ThrowingKnife, 100);
@@ -47,28 +54,36 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Knives
 		}
 	}
 
-	public class LuminiteDaggerP : ModProjectile
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Luminite Dagger");
-		}
+    public class LuminiteDaggerP : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Luminite Dagger");
+        }
 
-		public override void SetDefaults()
-		{
-			Projectile.width = 30;
-			Projectile.height = 30;
-			Projectile.friendly = true;
-			Projectile.penetrate = -1;
-			Projectile.aiStyle = 0;
-			Projectile.timeLeft = 600;
-			Projectile.DamageType = DamageClass.Throwing;
-		}
+        public override void SetDefaults()
+        {
+            Projectile.width = 24;
+            Projectile.height = 10;
+            Projectile.friendly = true;
+            Projectile.aiStyle = 0;
+            Projectile.DamageType = DamageClass.Throwing;
+        }
 
-		public override void AI()
-		{
-			Projectile.rotation += 1.57f / 6;
-			Projectile.velocity.Y += .1f;
-		}
+        public override void AI()
+        {
+            Projectile.direction = Projectile.spriteDirection = Projectile.velocity.X > 0f ? 1 : -1;
+            Projectile.rotation = Projectile.velocity.ToRotation();
+            if (Projectile.velocity.Y > 16f)
+            {
+                Projectile.velocity.Y = 16f;
+            }
+            if (Projectile.spriteDirection == -1)
+            {
+                Projectile.rotation += MathHelper.Pi;
+            }
+
+            Projectile.spriteDirection = (Vector2.Dot(Projectile.velocity, Vector2.UnitX) >= 0f).ToDirectionInt();
+        }
     }
 }

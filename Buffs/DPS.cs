@@ -215,4 +215,31 @@ namespace GalacticMod.Buffs
             npc.GetGlobalNPC<GalacticNPC>().elementalBlaze = true;
         }
     }
+
+    public class NebulaFlameD : ModBuff
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Nebula Flame");
+            Main.debuff[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.lifeRegen -= 15;
+            int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, DustID.Shadowflame, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 0, default, 2.5f);
+            Main.dust[dust].noGravity = true;
+            Main.dust[dust].velocity *= 1f;
+            Main.dust[dust].velocity.Y -= 2f;
+            int dust1 = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, DustID.PinkTorch, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 0, default, 2.5f);
+            Main.dust[dust1].noGravity = true;
+            Main.dust[dust1].velocity *= 1f;
+            Main.dust[dust1].velocity.Y -= 2f;
+        }
+
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<GalacticNPC>().nebulaFlame = true;
+        }
+    }
 }

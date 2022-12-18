@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using System;
 using Terraria.Audio;
 using GalacticMod.Items.Hardmode;
+using GalacticMod.Buffs;
 
 namespace GalacticMod.Items.PostML.Celestial
 {
@@ -138,12 +139,12 @@ namespace GalacticMod.Items.PostML.Celestial
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             Projectile.damage = Projectile.damage * 9 / 10;
-            target.AddBuff(BuffID.ShadowFlame, 240);
+            target.AddBuff(BuffType<NebulaFlameD>(), 240);
         }
 
         public override void OnHitPvp(Player target, int damage, bool crit)
         {
-            target.AddBuff(BuffID.ShadowFlame, 240);
+            target.AddBuff(BuffType<NebulaFlameD>(), 240);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

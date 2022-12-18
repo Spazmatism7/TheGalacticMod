@@ -17,7 +17,7 @@ namespace GalacticMod.Items.PostML.Hellfire
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Rains Hellfire from the sky");
+            Tooltip.SetDefault("Summons bolts of Hellfire to follow your enemies");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
@@ -61,7 +61,7 @@ namespace GalacticMod.Items.PostML.Hellfire
                 Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(30)); // This defines the projectiles random spread; 5 degree spread.
                 Projectile.NewProjectile(source, new Vector2(position.X, position.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), type, damage, knockback, player.whoAmI);
             }
-            SoundEngine.PlaySound(SoundID.Item, player.Center);
+            SoundEngine.PlaySound(SoundID.Item9, player.Center);
 
             return false;
         }

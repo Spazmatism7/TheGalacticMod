@@ -39,8 +39,7 @@ Added a late Pre-Hardmode boss, Jörmungandr
 Added Toxotai and Granite Core
 
 [h3]Buffs[/h3]
-Added Infested debuff
-Added Elemental debuff
+Added Infested, Elemental, and Nebula Flame debuffs
 Added Instability and Zirconium Slow debuffs
 Added Lutetium Armor buff and Lutetium Cooldown debuff
 Added Sirrocco Tag debuff
@@ -91,6 +90,8 @@ Storm's Herald now acts like a spear
 Reworked Iridium Blaster
 Enhanced Cursed Fireball
 Beetle Spear lasers fire sporatically
+Reworked Luminite Dagger
+Saxum projectiles now roll on contact with tiles, instead of being killed
 
 [h3]Rebalances[/h3]
 Steel Bars are now sold for 40 silver
@@ -193,7 +194,8 @@ Weevil Poker projectiles face the way they're fired
 Spectre Bolts give off light
 Spectre Curse and Terra Burn debuffs gives off less dust
 Shortened Amaza Blade handle, but lengthed the blade
-Frost Blade blade is longer
+Frost Blade's and Saxum's blades are longer
+Molten Throwing Axe handle is longer
 
 [h3]Renaming[/h3]
 Renamed Lions Roar to Lion's Roar
@@ -257,7 +259,8 @@ Asteroid tooltip now says 'Extraterrestrial flames eat away your body'
 Defense buffs now have a tooltip explaining the reprecussions of using too many
 Gave Feather weapons tooltips
 Gave Iridium Launcher a tooltip
-Shortswords now have a tooltip explaining there unique abilities
+Shortswords now have a tooltip explaining their unique abilities
+Gave Iridium Shard and Bar tooltip
 
 [h3]Config[/h3]
 Moved Sprite Settings config to a Personal (ClientSide) Config
@@ -320,6 +323,7 @@ Iron, Lead, and Steel Boomerangs no longer home
 Spears now use the correct use style
 Shadowshot now has the correct rarity
 Fixed a bug with Magma Wand recipe
+Fixed several sound bugs
 
 [h2]Removals[/h2]
 Removed Advanced Combat Techniques II

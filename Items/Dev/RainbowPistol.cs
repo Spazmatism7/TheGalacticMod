@@ -34,7 +34,7 @@ namespace GalacticMod.Items.Dev
             Item.rare = -12;
             Item.expert = true;
             Item.crit = 6;
-            Item.UseSound = SoundID.Item;
+            Item.UseSound = SoundID.Item12;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.PurificationPowder;
             Item.useAmmo = AmmoID.Arrow;
@@ -46,7 +46,7 @@ namespace GalacticMod.Items.Dev
         {
             Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10)); // This defines the projectiles random spread . 10 degree spread.
             Projectile.NewProjectile(source, new Vector2(position.X, position.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<SpinningRainbow>(), damage, knockback, player.whoAmI);
-            SoundEngine.PlaySound(SoundID.Item, player.Center);
+            SoundEngine.PlaySound(SoundID.Item12, player.Center);
 
             return false;
         }

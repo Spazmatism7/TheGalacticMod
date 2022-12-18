@@ -88,16 +88,14 @@ namespace GalacticMod.Items.Hardmode.Asteroid
                 Projectile.frame = 0;
             }
 
-            var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, 0, 0, 100, default, 1f);
-            var dust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.MeteorHead, 0, 0, 130, default, 0.5f);
+            var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.WhiteTorch, 0, 0, 100, default, 1f);
         }
 
         public override void Kill(int timeLeft)
         {
             for (int i = 0; i < 5; i++)
             {
-                var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, 0, 0, 100, default, 1f);
-                var dust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.MeteorHead, 0, 0, 130, default, 0.5f);
+                var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.WhiteTorch, 0, 0, 100, default, 1f);
             }
         }
     }

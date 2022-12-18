@@ -1,10 +1,8 @@
-﻿using GalacticMod.Tiles;
-using Terraria;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
-using System;
+using System.Collections.Generic;
 using GalacticMod.Buffs;
 
 namespace GalacticMod.Items.Accessories
@@ -13,17 +11,28 @@ namespace GalacticMod.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            var list = GalacticMod.ArmourSpecialHotkey.GetAssignedKeys();
+            DisplayName.SetDefault("Granite Core");
+            
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            var key = GalacticMod.GraniteCoreHotkey.GetAssignedKeys();
             string keyName = "(Not bound, set in controls)";
 
-            if (list.Count > 0)
+            if (key.Count > 0)
             {
-                keyName = list[0];
+                keyName = key[0];
             }
 
-            DisplayName.SetDefault("Granite Core");
-            Tooltip.SetDefault("Press and hold '" + keyName + "' places you in a form of stasis");
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            foreach (TooltipLine line in tooltips)
+            {
+                if (line.Mod == "Terraria" && line.Name == "Tooltip0")
+                {
+                    line.Text = "Press and hold '" + keyName + "' to place yourself in a form of stasis";
+                }
+            }
         }
 
         public override void SetDefaults()
@@ -38,7 +47,7 @@ namespace GalacticMod.Items.Accessories
 
         public override void UpdateEquip(Player player)
         {
-            if (GalacticMod.ArmourSpecialHotkey.Current && !player.HasBuff(ModContent.BuffType<GraniteCoreBuff>()))
+            if (GalacticMod.GraniteCoreHotkey.Current)
             {
                 player.AddBuff(ModContent.BuffType<GraniteCoreBuff>(), 12);
             }

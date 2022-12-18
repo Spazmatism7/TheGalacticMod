@@ -69,15 +69,23 @@ namespace GalacticMod.Projectiles
 		}
 
 		public override void SetDefaults()
-		{
-			Projectile.CloneDefaults(ProjectileID.Boulder);
-			AIType = ProjectileID.Boulder;
-			Projectile.DamageType = DamageClass.Melee;
-			Projectile.friendly = true;
-			Projectile.hostile = false;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 1;
+        {
+            Projectile.width = 31;
+            Projectile.height = 31;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.aiStyle = 1;
+            Projectile.light = 0.1f;
+
+            Projectile.friendly = true;
+            Projectile.hostile = false;
+            Projectile.timeLeft = 300;
+            Projectile.penetrate = 4;
+
+            Projectile.tileCollide = true;
+            Projectile.aiStyle = 14;
         }
+
+		public override bool OnTileCollide(Vector2 oldVelocity) => false;
 	}
 
 	public class FrostBlast : ModProjectile

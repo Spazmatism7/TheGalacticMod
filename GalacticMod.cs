@@ -36,6 +36,7 @@ namespace GalacticMod
 	public class GalacticMod : Mod
 	{
         public static ModKeybind ArmourSpecialHotkey;
+        public static ModKeybind GraniteCoreHotkey;
 
         public GalacticMod()
 		{
@@ -44,6 +45,7 @@ namespace GalacticMod
         public override void Load()
         {
             ArmourSpecialHotkey = KeybindLoader.RegisterKeybind(this, "Armor Ability", "Q");
+            GraniteCoreHotkey = KeybindLoader.RegisterKeybind(this, "Granite Core", "Z");
 
             /*ModLoader.TryGetMod("Wikithis", out Mod wikithis);
             if (wikithis != null && !Main.dedServ)
@@ -59,6 +61,7 @@ namespace GalacticMod
         public override void Unload()
         {
             ArmourSpecialHotkey = null;
+            GraniteCoreHotkey = null;
         }
 
         public override void PostSetupContent()
