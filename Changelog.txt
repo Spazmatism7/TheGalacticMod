@@ -28,7 +28,7 @@ Added Sirocco
 Added Soul Shard in the place of Shattered Insignias
 Added Shroomite Bullet
 Added Tide Turner
-Added Granite Core accessory
+Added Granite Core, Fire Totem and Gods Gift accessories
 
 [h3]NPCs[/h3]
 Added a new Pre-Hardmode boss, Sky God
@@ -233,6 +233,8 @@ Replaced Bars of Life with Broken Hero Sword in Elemental Edge recipe
 Removed the Osmium Bars from the Elemental Edge recipe
 Removed Chlorophyte from Terra weapon recipes
 Bars of Life always come last in recipes
+Removed Celestial Emblem and Celestial Shell from Otherworldly Insignia recipe
+Replaced Magic Quiver with Molten Quiver in Ranger Rune recipe
 
 [h3]Retiering[/h3]
 Blood Droplets only spawn post-EoC, but are more difficult

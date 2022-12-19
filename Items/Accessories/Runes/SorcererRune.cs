@@ -49,11 +49,26 @@ namespace GalacticMod.Items.Accessories.Runes
 		public override void AddRecipes()
 		{
 			Recipe recipe = Recipe.Create(ItemType<SorcererRune>());
-			recipe.AddIngredient(ItemID.SorcererEmblem); //Sorcerer Emblem
-			recipe.AddIngredient(ItemID.CelestialCuffs); //Celestial Cuffs
-			recipe.AddIngredient(ItemID.ManaFlower); //Mana Flower
+			recipe.AddIngredient(ItemID.SorcererEmblem);
+			recipe.AddIngredient(ItemID.CelestialCuffs);
+			recipe.AddIngredient(ItemID.ManaFlower);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
-		}
+
+            recipe = Recipe.Create(ItemType<SorcererRune>());
+            recipe.AddIngredient(ItemID.SorcererEmblem);
+            recipe.AddIngredient(ItemID.MagicCuffs);
+            recipe.AddIngredient(ItemID.MagnetFlower);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.Register();
+
+            recipe = Recipe.Create(ItemType<SorcererRune>());
+            recipe.AddIngredient(ItemID.SorcererEmblem);
+            recipe.AddIngredient(ItemID.MagicCuffs);
+            recipe.AddIngredient(ItemID.ManaFlower);
+            recipe.AddIngredient(ItemID.CelestialMagnet);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.Register();
+        }
 	}
 }

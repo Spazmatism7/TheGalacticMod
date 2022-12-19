@@ -19,7 +19,8 @@ namespace GalacticMod.Items.Accessories.Runes
 				"\nIncreases view range for guns (Right click to zoom out)" +
 				"\n10% increased ranged critical strike chance" +
 				"\nIncreases arrow damage by 10% and greatly increases arrow speed" +
-				"\n20% chance to not consume arrows");
+				"\n20% chance to not consume arrows" +
+                "\nLights Wooden Arrows ablaze");
 		}
 
 		public override void SetDefaults()
@@ -44,14 +45,15 @@ namespace GalacticMod.Items.Accessories.Runes
 			//Magic Quiver
 			player.magicQuiver = true;
 			player.arrowDamage += 0.1f;
-		}
+            player.hasMoltenQuiver = true;
+        }
 
 		public override void AddRecipes()
 		{
 			Recipe recipe = Recipe.Create(ItemType<RangerRune>());
 			recipe.AddIngredient(ItemID.RangerEmblem); //Ranger Emblem
 			recipe.AddIngredient(ItemID.SniperScope); //Sniper Scope
-			recipe.AddIngredient(ItemID.MagicQuiver); //Magic Quiver
+			recipe.AddIngredient(ItemID.MoltenQuiver); //Magic Quiver
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}

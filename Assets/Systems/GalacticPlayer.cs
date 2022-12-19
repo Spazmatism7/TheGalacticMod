@@ -22,20 +22,24 @@ using GalacticMod.Items.Boss;
 using GalacticMod.NPCs.Bosses.PostML;
 using GalacticMod.NPCs.Bosses.PreHM;
 using GalacitcMod.Items;
+using GalacticMod.Items.PreHM.Nautilus;
 
 namespace GalacticMod.Assets.Systems
 {
     public class GalacticPlayer : ModPlayer
     {
-        public float GrenadeExplosionModifier = 1f;
-        public bool HellflameBonus; //Player has full set of Hellflame armour
-        public bool SteelBonus; //Player has full set of Hellflame armour
-        public bool GalacticAmulet;
-        public bool Hellfire;
+        public bool HellflameBonus;
+        public bool SteelBonus;
         public bool VanadiumHeal;
         public int modDash;
         public bool OsmiumDamage;
         public bool ZirconiumSpeed;
+        public bool ZirconiumWarp;
+        public int osmiumSouls;
+        public int osmiumSoulsMax = 16;
+        public bool zirconiumCharged; //Activates when the player is able to teleport with the Zirconium armour
+
+        public bool Hellfire;
         public bool Smoke;
         public bool glacierDebuff;
         public bool sandBlasted;
@@ -45,32 +49,32 @@ namespace GalacticMod.Assets.Systems
         public bool asteroidBlaze;
         public bool iridiumPoisoning;
         public bool elementalBlaze;
-        public bool ZirconiumWarp;
-
         public int defenseBuffs;
         public float oldEndurance;
-        public int osmiumSouls;
-        public int osmiumSoulsMax = 16;
-        public bool zirconiumCharged; //Activates when the player is able to teleport with the Zirconium armour
 
-        //public Vector2 HitboxPosition = Vector2.Zero;
-
+        public bool GalacticAmulet;
         public bool spineScarf;
         public int spineScarfCounter;
+
+        public bool fireTotem;
+        public bool nautilusBadge;
+        public bool waterSpawned;
 
         public int cooldown;
 
         public override void ResetEffects()
         {
-            GrenadeExplosionModifier = 1f;
             HellflameBonus = false;
             SteelBonus = false;
-            GalacticAmulet = false;
-            Hellfire = false;
             VanadiumHeal = false;
             modDash = 0;
             OsmiumDamage = false;
             ZirconiumSpeed = false;
+            osmiumSouls = 0;
+            osmiumSoulsMax = 16;
+            ZirconiumWarp = false;
+
+            Hellfire = false;
             Smoke = false;
             glacierDebuff = false;
             sandBlasted = false;
@@ -81,12 +85,13 @@ namespace GalacticMod.Assets.Systems
             iridiumPoisoning = false;
             defenseBuffs = 0;
             oldEndurance = 0;
-            osmiumSouls = 0;
-            osmiumSoulsMax = 16;
             elementalBlaze = false;
-            ZirconiumWarp = false;
 
+            GalacticAmulet = false;
             spineScarf = false;
+
+            fireTotem = false;
+            nautilusBadge = false;
 
             cooldown = 0;
         }
@@ -95,6 +100,7 @@ namespace GalacticMod.Assets.Systems
         {
             osmiumSouls = 0;
             zirconiumCharged = false;
+            waterSpawned = false;
         }
 
         int HfProj = ProjectileType<HellflameArmorProj>();
@@ -264,6 +270,59 @@ namespace GalacticMod.Assets.Systems
             if (NPC.AnyNPCs(NPCType<JormungandrHead>()))
             {
                 Lighting.GlobalBrightness = .1f;
+            }
+
+            if (fireTotem)
+            {
+                if (Player.HeldItem.damage >= 1) //If the player is holding a weapon and usetime cooldown is above 1
+                {
+                    if (Player.itemAnimation == 1 || Player.HeldItem.channel && Player.channel)
+                    {
+                        for (int index = 0; index < 1; ++index)
+                        {
+                            Vector2 vector2_1 = new Vector2((float)(Player.position.X + Player.width * 0.5 + Main.rand.Next(50) * -Player.direction + (Main.mouseX + (double)Main.screenPosition.X
+                                - Player.position.X)), (float)(Player.position.Y + Player.height * 0.5 - 600.0)); //this defines the projectile width, direction and position
+                            vector2_1.X = (float)(((double)vector2_1.X + Player.Center.X) / 2.0) + Main.rand.Next(-50, 51); //Spawn Spread
+                            vector2_1.Y -= 100 * index;
+                            float num12 = Main.mouseX + Main.screenPosition.X - vector2_1.X;
+                            float num13 = Main.mouseY + Main.screenPosition.Y - vector2_1.Y;
+                            if ((double)num13 < 0.0)
+                                num13 *= -1f;
+                            if ((double)num13 < 20.0)
+                                num13 = 20f;
+                            float num14 = (float)Math.Sqrt((double)num12 * (double)num12 + (double)num13 * (double)num13);
+                            float num15 = 10 / num14;
+                            float num16 = num12 * num15;
+                            float num17 = num13 * num15;
+                            float SpeedX = num16 + Main.rand.Next(-2, 2) * 0.05f;  //this defines the projectile X position speed and randomnes
+                            float SpeedY = num17 + Main.rand.Next(-2, 2) * 0.05f;  //this defines the projectile Y position speed and randomnes
+                            Projectile.NewProjectile(null, new Vector2(vector2_1.X, vector2_1.Y), new Vector2(SpeedX, SpeedY), ProjectileType<FireTotemProj>(), 25, 0.5f, Player.whoAmI, 0.0f, (float)Main.rand.Next(5));
+
+                            SoundEngine.PlaySound(SoundID.Item21, Player.Center);
+                            for (int i = 0; i < 35; i++)
+                            {
+                                var dust = Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.Torch, 0, -3);
+                                dust.velocity *= 2;
+                                dust.scale = 1.5f;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (nautilusBadge)
+            {
+                if (!waterSpawned) //spawn the 2 orbiting orojs
+                {
+                    waterSpawned = true;
+
+                    Projectile.NewProjectile(null, Player.Center, new Vector2(0, 0), ProjectileType<NautilusBadgeProj>(), 20, 1f, Player.whoAmI, 0, 0);
+                    Projectile.NewProjectile(null, Player.Center, new Vector2(0, 0), ProjectileType<NautilusBadgeProj>(), 20, 1f, Player.whoAmI, 0, 180);
+                }
+            }
+            else if (!nautilusBadge) //reset bool
+            {
+                waterSpawned = false;
             }
         }
 
