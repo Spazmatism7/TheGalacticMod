@@ -21,9 +21,9 @@ namespace GalacticMod.Items.Accessories.Runes
 		{
 			Tooltip.SetDefault("Increases pickup range for mana stars" +
                 "\nGrants 4 defense" +
-				"\n25% increased melee and ranged damage" +
-				"\nIncreases melee knockback and inflicts fire damage on attack" +
-				"\n10% increased melee speed" +
+				"\n27% increased melee and 25% ranged damage" +
+				"\nIncreases melee knockback, size, and speed" +
+                "\nMelee attacks inflict fire, frostburn, shadowflame, and poison" +
 				"\nIncreases view range for guns (Right click to zoom out)" +
 				"\n10% increased ranged critical strike chance" +
 				"\nIncreases arrow damage by 10% and greatly increases arrow speed" +
@@ -61,15 +61,17 @@ namespace GalacticMod.Items.Accessories.Runes
 			//Emblem
 			player.GetDamage(DamageClass.Melee) += 0.15f;
 
-			//Fire Gauntlet
-			player.kbGlove = true;
-			player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
-			player.GetDamage(DamageClass.Melee) += 0.1f;
-			player.magmaStone = true;
+            //Elemental Gauntlet
+            player.kbGlove = true;
+            player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
+            player.GetDamage(DamageClass.Melee) += 0.1f;
+            player.magmaStone = true;
+            player.GetModPlayer<GalacticPlayer>().shadowflame = true;
+            player.GetModPlayer<GalacticPlayer>().elementalGauntlet = true;
 
-			//Ranger Rune
-			//Emblem
-			player.GetDamage(DamageClass.Ranged) += 0.15f;
+            //Ranger Rune
+            //Emblem
+            player.GetDamage(DamageClass.Ranged) += 0.15f;
 
 			//Sniper Scope
 			player.scope = true;
@@ -115,8 +117,8 @@ namespace GalacticMod.Items.Accessories.Runes
 			recipe.AddIngredient(Mod, "SorcererRune");
 			recipe.AddIngredient(Mod, "SummonerRune");
             recipe.AddIngredient(Mod, "FireTotem");
-            recipe.AddTile(Mod, "Infinity");
-			recipe.Register();
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.Register();
 		}
 	}
 }

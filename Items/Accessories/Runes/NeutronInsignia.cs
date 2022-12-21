@@ -100,8 +100,8 @@ namespace GalacticMod.Items.Accessories.Runes
 			recipe.AddIngredient(ItemID.Shackle);
 			recipe.AddIngredient(Mod, "WoodenShield");
 			recipe.AddIngredient(Mod, "SoulFragment");
-			recipe.AddTile(Mod, "Infinity");
-			recipe.Register();
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.Register();
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

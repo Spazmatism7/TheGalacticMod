@@ -47,7 +47,7 @@ namespace GalacticMod.Items.Accessories.Runes
 			recipe.AddIngredient(ItemID.LifeCrystal, 5); //Life Crystal
 			recipe.AddIngredient(ItemID.LifeFruit, 2); //Life Fruit
 			recipe.AddIngredient(Mod, "SoulFragment");
-			recipe.AddTile(Mod, "Infinity");
+			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.Register();
 		}
 	}

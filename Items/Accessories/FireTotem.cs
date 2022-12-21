@@ -21,7 +21,7 @@ namespace GalacticMod.Items.Accessories
 
             Item.width = 16;
             Item.height = 30;
-            Item.value = Item.sellPrice(0, 0, 50, 0);
+            Item.value = Item.sellPrice(0, 5, 0, 0);
             Item.rare = ItemRarityID.Orange;
 
             Item.accessory = true;

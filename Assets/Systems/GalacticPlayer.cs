@@ -59,6 +59,8 @@ namespace GalacticMod.Assets.Systems
         public bool fireTotem;
         public bool nautilusBadge;
         public bool waterSpawned;
+        public bool shadowflame;
+        public bool elementalGauntlet;
 
         public int cooldown;
 
@@ -296,15 +298,9 @@ namespace GalacticMod.Assets.Systems
                             float num17 = num13 * num15;
                             float SpeedX = num16 + Main.rand.Next(-2, 2) * 0.05f;  //this defines the projectile X position speed and randomnes
                             float SpeedY = num17 + Main.rand.Next(-2, 2) * 0.05f;  //this defines the projectile Y position speed and randomnes
-                            Projectile.NewProjectile(null, new Vector2(vector2_1.X, vector2_1.Y), new Vector2(SpeedX, SpeedY), ProjectileType<FireTotemProj>(), 25, 0.5f, Player.whoAmI, 0.0f, (float)Main.rand.Next(5));
+                            Projectile.NewProjectile(null, new Vector2(vector2_1.X, vector2_1.Y), new Vector2(SpeedX, SpeedY), ProjectileType<FireTotemProj>(), 25, 0.5f, Player.whoAmI, 0.0f, Main.rand.Next(5));
 
                             SoundEngine.PlaySound(SoundID.Item21, Player.Center);
-                            for (int i = 0; i < 35; i++)
-                            {
-                                var dust = Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.Torch, 0, -3);
-                                dust.velocity *= 2;
-                                dust.scale = 1.5f;
-                            }
                         }
                     }
                 }
@@ -316,8 +312,8 @@ namespace GalacticMod.Assets.Systems
                 {
                     waterSpawned = true;
 
-                    Projectile.NewProjectile(null, Player.Center, new Vector2(0, 0), ProjectileType<NautilusBadgeProj>(), 20, 1f, Player.whoAmI, 0, 0);
-                    Projectile.NewProjectile(null, Player.Center, new Vector2(0, 0), ProjectileType<NautilusBadgeProj>(), 20, 1f, Player.whoAmI, 0, 180);
+                    Projectile.NewProjectile(null, Player.Center, new Vector2(0, 0), ProjectileType<NautilusBadgeProj>(), 10, 1f, Player.whoAmI, 0, 180);
+                    Projectile.NewProjectile(null, Player.Center, new Vector2(0, 0), ProjectileType<NautilusBadgeProj>(), 10, 1f, Player.whoAmI, 0, 0);
                 }
             }
             else if (!nautilusBadge) //reset bool
@@ -390,6 +386,16 @@ namespace GalacticMod.Assets.Systems
             if (ZirconiumSpeed)
             {
                 Player.AddBuff(BuffType<ZirconiumRun>(), 7 * 60);
+            }
+
+            if (shadowflame)
+            {
+                target.AddBuff(BuffID.ShadowFlame, 4 * 60);
+            }
+            if (elementalGauntlet)
+            {
+                target.AddBuff(BuffID.Frostburn, 60 * 4);
+                target.AddBuff(BuffID.Poisoned, 60 * 4);
             }
         }
 

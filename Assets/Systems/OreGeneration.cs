@@ -18,14 +18,12 @@ namespace GalacticMod.Assets.Systems
 {
     public class OreGeneration : ModSystem
     {
-        public bool hasGeneratedCarbonite;
         public bool hasGennedStorm;
         public bool hasGeneratedAmaza;
         public bool hasGeneratedIOres;
 
         public override void OnWorldLoad()
         {
-            hasGeneratedCarbonite = false;
             hasGeneratedAmaza = false;
             hasGeneratedIOres = false;
             hasGennedStorm = false;
@@ -33,7 +31,6 @@ namespace GalacticMod.Assets.Systems
 
         public override void SaveWorldData(TagCompound tag)
         {
-            tag["gennedCarbon"] = hasGeneratedCarbonite;
             tag["gennedAmaza"] = hasGeneratedAmaza;
             tag["gennedIOres"] = hasGeneratedIOres;
             tag["gennedStorm"] = hasGennedStorm;
@@ -41,7 +38,6 @@ namespace GalacticMod.Assets.Systems
 
         public override void LoadWorldData(TagCompound tag)
         {
-            hasGeneratedCarbonite = tag.GetBool("gennedCarbon");
             hasGeneratedAmaza = tag.GetBool("gennedAmaza");
             hasGeneratedIOres = tag.GetBool("gennedIOres");
             hasGennedStorm = tag.GetBool("gennedStorm");
@@ -50,7 +46,6 @@ namespace GalacticMod.Assets.Systems
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
-            flags[0] = hasGeneratedCarbonite;
             flags[1] = hasGeneratedAmaza;
             flags[2] = hasGeneratedIOres;
             flags[3] = hasGennedStorm;
@@ -60,7 +55,6 @@ namespace GalacticMod.Assets.Systems
         public override void NetReceive(BinaryReader reader)
         {
             BitsByte flags = reader.ReadByte();
-            hasGeneratedCarbonite = flags[0];
             hasGeneratedAmaza = flags[1];
             hasGeneratedIOres = flags[2];
             hasGennedStorm = flags[3];
@@ -70,31 +64,6 @@ namespace GalacticMod.Assets.Systems
         {
             if (!GetInstance<GalacticModConfig>().PreventOreSpawn)
             {
-                if (!hasGeneratedCarbonite && NPC.downedBoss3)
-                {
-                    for (int i = 0; i < (int)(Main.maxTilesX * Main.maxTilesY * 6E-06); i++)
-                    {
-                        WorldGen.OreRunner(
-                            WorldGen.genRand.Next(0, Main.maxTilesX), // X Coord of the tile
-                            WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY - 200), // Y Coord of the tile
-                            WorldGen.genRand.Next(18, 28), // Strength (High = more)
-                            WorldGen.genRand.Next(5, 6), // Steps
-                            (ushort)TileType<CarboniteT>() // The tile type that will be spawned
-                           );
-                    }
-                    string key = "The world has been blessed with Carbonite!";
-                    Color messageColor = Color.Cyan;
-                    if (Main.netMode == NetmodeID.Server) // Server
-                    {
-                        Terraria.Chat.ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
-                    }
-                    else if (Main.netMode == NetmodeID.SinglePlayer) // Single Player
-                    {
-                        Main.NewText(Language.GetTextValue(key), messageColor);
-                    }
-                    hasGeneratedCarbonite = true;
-                }
-
                 if (!hasGennedStorm && Main.hardMode)
                 {
                     for (int i = 0; i < (int)(Main.maxTilesX * Main.maxTilesY * 6E-06); i++)

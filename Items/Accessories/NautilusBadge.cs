@@ -11,7 +11,7 @@ namespace GalacticMod.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("2 Nautilus Spheres will orbit you, damaging and knocking back enemies");
+            Tooltip.SetDefault("Summons 2 Nautilus Spheres to orbit you");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
@@ -19,7 +19,7 @@ namespace GalacticMod.Items.Accessories
         {
             Item.width = 34;
             Item.height = 34;
-            Item.value = Item.sellPrice(0, 0, 75, 0);
+            Item.value = Item.sellPrice(0, 1, 5, 0);
             Item.rare = ItemRarityID.Blue;
 
             Item.accessory = true;

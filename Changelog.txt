@@ -28,7 +28,8 @@ Added Sirocco
 Added Soul Shard in the place of Shattered Insignias
 Added Shroomite Bullet
 Added Tide Turner
-Added Granite Core, Fire Totem and Gods Gift accessories
+Added Granite Core, Fire Totem, Gods Gift, and Nautilus Badge accessories
+Added Shadowflame and Elemental Gauntlet accessories
 
 [h3]NPCs[/h3]
 Added a new Pre-Hardmode boss, Sky God
@@ -92,6 +93,7 @@ Enhanced Cursed Fireball
 Beetle Spear lasers fire sporatically
 Reworked Luminite Dagger
 Saxum projectiles now roll on contact with tiles, instead of being killed
+Carbonite no longer spawns as an ore, instead it drops from enemies
 
 [h3]Rebalances[/h3]
 Steel Bars are now sold for 40 silver
@@ -196,6 +198,7 @@ Spectre Curse and Terra Burn debuffs gives off less dust
 Shortened Amaza Blade handle, but lengthed the blade
 Frost Blade's and Saxum's blades are longer
 Molten Throwing Axe handle is longer
+Resprited Carbonite and Bone armor
 
 [h3]Renaming[/h3]
 Renamed Lions Roar to Lion's Roar
@@ -235,6 +238,7 @@ Removed Chlorophyte from Terra weapon recipes
 Bars of Life always come last in recipes
 Removed Celestial Emblem and Celestial Shell from Otherworldly Insignia recipe
 Replaced Magic Quiver with Molten Quiver in Ranger Rune recipe
+Insignias are crafted at the Ancient Manipulator instead of The Infinity
 
 [h3]Retiering[/h3]
 Blood Droplets only spawn post-EoC, but are more difficult
@@ -328,6 +332,7 @@ Fixed a bug with Magma Wand recipe
 Fixed several sound bugs
 
 [h2]Removals[/h2]
+Removed Carbonite Tile
 Removed Advanced Combat Techniques II
 Removed Lunar and Magic Defense Potions
 Removed Super Explosives, and all 3 Expert Runes

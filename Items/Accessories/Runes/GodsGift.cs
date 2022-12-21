@@ -34,14 +34,15 @@ namespace GalacticMod.Items.Accessories.Runes
 				"\nReduces the cooldown of healing potions by 25%" +
 				"\nEnemies are more likely to target you" +
                 "\nIncreases pickup range for mana stars" +
-                "\nLights Wooden Arrows ablaze and inflicts fire damage on attack" +
-				"\nIncreases view range for guns (Right click to zoom out)" +
+                "\nLights Wooden Arrows ablaze and melee attacks inflict fire, frostburn, shadowflame, and poison" +
+                "\nIncreases view range for guns (Right click to zoom out)" +
 				"\n20% chance to not consume arrows" +
                 "\n8% reduced mana usage" +
                 "\nRestores mana when damaged and automatically use mana potions when needed" +
 				"\nIncreases your max number of minions by 2" +
                 "\nUsing weapons rains fire towards the cursor" +
-                "\nTurns the holder into a werewolf at night and a merfolk when entering water");
+                "\nTurns the holder into a werewolf at night and a merfolk when entering water" +
+                "\nSummons 2 Nautilus Spheres to orbit you");
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(600, 8.5f, 2.2f);
         }
 
@@ -75,6 +76,9 @@ namespace GalacticMod.Items.Accessories.Runes
 
         public override void UpdateEquip(Player player)
         {
+            //Nautilus Badge
+            player.GetModPlayer<GalacticPlayer>().nautilusBadge = true;
+
             //Celestial Rune
             player.lifeRegen += 2;
             player.statDefense += 4;
@@ -110,11 +114,13 @@ namespace GalacticMod.Items.Accessories.Runes
             //Emblem
             player.GetDamage(DamageClass.Melee) += 0.15f;
 
-            //Fire Gauntlet
+            //Elemental Gauntlet
             player.kbGlove = true;
             player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
             player.GetDamage(DamageClass.Melee) += 0.1f;
             player.magmaStone = true;
+            player.GetModPlayer<GalacticPlayer>().shadowflame = true;
+            player.GetModPlayer<GalacticPlayer>().elementalGauntlet = true;
 
             //Ranger Rune
             //Emblem
@@ -278,6 +284,7 @@ namespace GalacticMod.Items.Accessories.Runes
             recipe.AddIngredient(Mod, "UniversalInsignia");
             recipe.AddIngredient(Mod, "GraniteCoreItem");
             recipe.AddIngredient(Mod, "CelestialRune");
+            recipe.AddIngredient(Mod, "NautilusBadge");
             recipe.AddTile(Mod, "Infinity");
             recipe.Register();
         }

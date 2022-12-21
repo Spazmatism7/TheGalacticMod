@@ -1,5 +1,8 @@
 ﻿using GalacticMod.Assets.Config;
+using GalacticMod.Buffs;
 using GalacticMod.Items.GamemodeItems;
+using GalacticMod.Items.PostML.Celestial;
+using GalacticMod.Items.PreHM.Truffle;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -111,6 +114,26 @@ namespace GalacticMod.Assets.Systems
                 }
                 bloodMessage = true;
             }
+        }
+    }
+
+    public class GamemodeNPCs : GlobalNPC
+    {
+        public override bool InstancePerEntity => true;
+
+        public bool Deathbringer;
+
+        public override void ResetEffects(NPC npc)
+        {
+            Deathbringer = false;
+        }
+
+        public override void AI(NPC npc)
+        {
+            if (GetInstance<Gamemodes>().Deathbringer)
+                Deathbringer = true;
+            else
+                Deathbringer = false;
         }
     }
 }

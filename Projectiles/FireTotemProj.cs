@@ -10,7 +10,7 @@ namespace GalacticMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Magic Fire Blast");
+            DisplayName.SetDefault("Fire Blast");
             Main.projFrames[Projectile.type] = 5;
         }
 
@@ -29,7 +29,7 @@ namespace GalacticMod.Projectiles
 
         public override void AI()
         {
-            AnimateProjectile();
+            Animate();
 
             if (Main.rand.NextFloat() < 1f)
             {
@@ -55,12 +55,6 @@ namespace GalacticMod.Projectiles
             target.AddBuff(BuffID.OnFire, 300);
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            Projectile.Kill();
-            return true;
-        }
-
         public override void Kill(int timeLeft)
         {
             if (Projectile.owner == Main.myPlayer)
@@ -71,30 +65,26 @@ namespace GalacticMod.Projectiles
                     Dust.NewDustDirect(Projectile.Center, Projectile.width, Projectile.height, DustID.Torch);
                 }
             }
+
+            int numberProjectiles = 4 + Main.rand.Next(2);
+
+            for (int i = 0; i < numberProjectiles; i++)
             {
-                int numberProjectiles = 4 + Main.rand.Next(2); //This defines how many projectiles to shot.
+                float speedX = 0.5f;
+                float speedY = -5f;
 
-                for (int i = 0; i < numberProjectiles; i++)
-                {
-                    float speedX = 0f;
-                    float speedY = -6f;
-
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(170));
-                    float scale = 1f - (Main.rand.NextFloat() * .7f);
-                    perturbedSpeed = perturbedSpeed * scale;
-                    int ProjID = Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<FireTotemProj2>(), (int)(Projectile.damage * 0.33f), 1, Projectile.owner);
-                    Main.projectile[ProjID].ArmorPenetration = 5;
-                }
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(170));
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<FireTotemProj2>(), (int)(Projectile.damage * 0.33f), 1f, Projectile.owner);
             }
         }
 
-        public void AnimateProjectile() // Call this every frame, for example in the AI method.
+        public void Animate()
         {
             Projectile.frameCounter++;
-            if (Projectile.frameCounter >= 4) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
+            if (Projectile.frameCounter >= 4) //This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
             {
                 Projectile.frame++;
-                Projectile.frame %= 5; // Will reset to the first frame if you've gone through them all.
+                Projectile.frame %= 5; //Will reset to the first frame if you've gone through them all.
                 Projectile.frameCounter = 0;
             }
         }
@@ -104,7 +94,7 @@ namespace GalacticMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Small Fire Bolt");
+            DisplayName.SetDefault("Small Fire Blast");
         }
         public override void SetDefaults()
         {
@@ -117,10 +107,10 @@ namespace GalacticMod.Projectiles
             AIType = ProjectileID.WoodenArrowFriendly;
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 15;
-            //drawOffsetX = -2;
-            //drawOriginOffsetY = -2;
             Projectile.ignoreWater = true;
+            Projectile.tileCollide = true;
             Projectile.DamageType = DamageClass.Generic;
+            Projectile.ArmorPenetration = 5;
         }
 
         public override void AI()
@@ -128,7 +118,6 @@ namespace GalacticMod.Projectiles
             if (Main.rand.NextBool(2))
             {
                 Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = Projectile.position;
                 dust = Dust.NewDustDirect(position, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 1, Projectile.velocity.Y * 1, 0, new Color(255, 255, 255), 1f);
                 dust.noGravity = true;
@@ -150,7 +139,7 @@ namespace GalacticMod.Projectiles
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.Kill();
-            return true;
+            return false;
         }
 
         public override void Kill(int timeLeft)

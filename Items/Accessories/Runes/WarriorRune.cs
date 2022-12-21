@@ -8,6 +8,7 @@ using Terraria.ID;
 using GalacticMod.Items.Accessories;
 using GalacticMod.Items.CraftingStations;
 using Microsoft.Xna.Framework.Input;
+using GalacticMod.Assets.Systems;
 
 namespace GalacticMod.Items.Accessories.Runes
 {
@@ -15,9 +16,10 @@ namespace GalacticMod.Items.Accessories.Runes
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("25% increased melee damage" +
-				"\nIncreases melee knockback and inflicts fire damage on attack" +
-				"\n10% increased melee speed");
+			Tooltip.SetDefault("Increases melee knockback and size" +
+                "\n27% increased melee damage and speed" +
+                "\nEnables auto swing for melee weapons" +
+                "\nMelee attacks inflict fire, frostburn, shadowflame, and poison");
 		}
 
 		public override void SetDefaults()
@@ -34,18 +36,20 @@ namespace GalacticMod.Items.Accessories.Runes
 			//Emblem
 			player.GetDamage(DamageClass.Melee) += 0.15f;
 
-			//Fire Gauntlet
+			//Elemental Gauntlet
 			player.kbGlove = true;
 			player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
 			player.GetDamage(DamageClass.Melee) += 0.1f;
 			player.magmaStone = true;
-		}
+            player.GetModPlayer<GalacticPlayer>().shadowflame = true;
+            player.GetModPlayer<GalacticPlayer>().elementalGauntlet = true;
+        }
 
 		public override void AddRecipes()
 		{
 			Recipe recipe = Recipe.Create(ItemType<WarriorRune>());
-			recipe.AddIngredient(ItemID.WarriorEmblem); //Warrior Emblem
-			recipe.AddIngredient(ItemID.FireGauntlet); //Fire Gauntlet
+			recipe.AddIngredient(ItemID.WarriorEmblem);
+			recipe.AddIngredient(Mod, "ElementalGauntlet");
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}

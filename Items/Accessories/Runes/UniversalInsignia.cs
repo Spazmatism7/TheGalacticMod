@@ -115,8 +115,8 @@ namespace GalacticMod.Items.Accessories.Runes
 			recipe.AddIngredient(ItemID.FartInABalloon);
 			recipe.AddIngredient(ItemID.SharkronBalloon);
 			recipe.AddIngredient(ItemID.MasterNinjaGear);
-			recipe.AddTile(Mod, "Infinity");
-			recipe.Register();
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.Register();
 		}
 	}
 }
