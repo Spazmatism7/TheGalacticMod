@@ -1,11 +1,11 @@
-﻿using GalacticMod.Tiles;
-using Terraria;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
-using System;
 using GalacticMod.Assets.Systems;
+using GalacticMod.Items.PreHM.Blood;
+using Terraria.GameContent.ItemDropRules;
+using static Terraria.ModLoader.ModContent;
 
 namespace GalacticMod.Items.Accessories
 {
@@ -30,6 +30,17 @@ namespace GalacticMod.Items.Accessories
         public override void UpdateEquip(Player player)
         {
             player.GetModPlayer<GalacticPlayer>().shadowflame = true;
+        }
+    }
+
+    class ShadowflameNPC : GlobalNPC
+    {
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
+            if (npc.type == NPCID.GoblinSummoner)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<Shadowflame>(), 3));
+            }
         }
     }
 }

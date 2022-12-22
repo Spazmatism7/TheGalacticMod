@@ -19,8 +19,7 @@ namespace GalacticMod.Items.GamemodeItems
 				"\nYou don't regen health" +
                 "\nOther forms of Healing still work" +
                 "\nHaving the bleeding debuff deals damage" +
-                "\nDoubles max life" +
-				"\nCannot be reversed");
+                "\nDoubles max life");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 
@@ -33,7 +32,6 @@ namespace GalacticMod.Items.GamemodeItems
 			Item.useTime = 45;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
-			Item.consumable = true;
 		}
 
         public override bool CanUseItem(Player player)

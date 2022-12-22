@@ -16,8 +16,7 @@ namespace GalacticMod.Items.GamemodeItems
 			DisplayName.SetDefault("Cursed Chalice of Death");
 			Tooltip.SetDefault("Activates No Hit Mode" +
                 "\nAll damage is multiplied by 9000" +
-                "\nDoes not bypass Journey Godmode" +
-                "\nCannot be reversed");
+                "\nDoes not bypass Journey Godmode");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 
@@ -30,7 +29,6 @@ namespace GalacticMod.Items.GamemodeItems
 			Item.useTime = 45;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
-			Item.consumable = true;
 		}
 
         public override bool CanUseItem(Player player)

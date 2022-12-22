@@ -35,8 +35,8 @@ namespace GalacticMod.Items.PreHM
             itemLoot.Add(ItemDropRule.Common(ItemID.WoodenBow));
             itemLoot.Add(ItemDropRule.Common(ItemID.WoodenArrow, 1, 100, 100));
             itemLoot.Add(ItemDropRule.Common(ItemType<PrototypePrism>()));
-            itemLoot.Add(ItemDropRule.Common(ItemID.Shuriken, 1, 50, 60));
             itemLoot.Add(ItemDropRule.Common(ItemID.ManaCrystal));
+            itemLoot.Add(ItemDropRule.Common(ItemID.Shuriken, 1, 50, 60));
             itemLoot.Add(ItemDropRule.Common(ItemID.Torch, 1, 25, 75));
             itemLoot.Add(ItemDropRule.Common(ItemID.Rope, 1, 25, 75));
         }

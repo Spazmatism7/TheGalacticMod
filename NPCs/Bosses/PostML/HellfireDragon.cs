@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 using GalacticMod.Assets;
 using GalacticMod.Items.Boss;
 using GalacticMod.Items.Boss.Master;
+using System.Runtime.InteropServices;
 
 namespace GalacticMod.NPCs.Bosses.PostML
 {
@@ -32,6 +33,8 @@ namespace GalacticMod.NPCs.Bosses.PostML
     {
         private bool halfHealth = false;
         private bool enraged = false;
+        int counter = 0;
+        float rotation;
 
         private enum phases 
         {
@@ -109,6 +112,8 @@ namespace GalacticMod.NPCs.Bosses.PostML
 
             if (!player.active || player.dead)
             {
+                NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X) + 0f;
+
                 NPC.TargetClosest(false);
                 player = Main.player[NPC.target];
                 if (!player.active || player.dead)
@@ -164,7 +169,7 @@ namespace GalacticMod.NPCs.Bosses.PostML
 
             NPC.ai[0]++;
 
-            if (Main.rand.NextBool(10))
+            /*if (Main.rand.NextBool(10))
             {
                 if (NPC.ai[0] >= 10 && !Main.expertMode)
                 {
@@ -215,13 +220,13 @@ namespace GalacticMod.NPCs.Bosses.PostML
                     }
                     else if (halfHealth)
                     {
-                        int damageExpertFireball = 75;
+                        int damageExpertFireball = 100;
                         int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<Fireball>(), damageExpertFireball, .5f, 0);
                         //NPC.GetSpawnSource_ForProjectile()
                     }
                     else
                     {
-                        int damageExpertFireball = 100;
+                        int damageExpertFireball = 75;
                         int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<Fireball>(), damageExpertFireball, .5f, 0);
                         //NPC.GetSpawnSource_ForProjectile()
                     }
@@ -243,7 +248,157 @@ namespace GalacticMod.NPCs.Bosses.PostML
                     ModContent.ProjectileType<FirenadoBolt>(), damageFirenado, .5f, 0);
                     //NPC.GetSpawnSource_ForProjectile()
                 }
+            }*/
+
+            if (!player.dead)
+            {
+                Attacks(player); //All attacks are in this hook
+
+                if (NPC.ai[3] >= 4) //go back to first attack when cycle is complete
+                    NPC.ai[3] = 1;
+
+                if (NPC.ai[3] <= 0)
+                    NPC.ai[3] = 1;
             }
+        }
+
+        private void Attacks(Player player)
+        {
+            int damageFireball = NPC.damage / 2;
+            int damageFirenado = NPC.damage * 2;
+
+            if (NPC.ai[3] == 1) //Attack One, Fireballs
+            {
+                if (Main.rand.NextBool(10) && NPC.ai[0] >= 10)
+                {
+                    float projectileSpeed = 20f;
+                    Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
+                    Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
+
+                    Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<Fireball>(), damageFireball, .5f, 0);
+                    //NPC.GetSpawnSource_ForProjectile()
+                    SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
+                }
+
+                if (Main.rand.NextBool(200) || counter > 20)
+                {
+                    NPC.ai[0] = 0;//Reset all ai values
+                    NPC.ai[1] = 0;
+                    NPC.ai[2] = 0;
+                    counter = 0;
+
+                    NPC.ai[3]++;
+                    NPC.localAI[0] = 0;
+                    NPC.netUpdate = true;
+                }
+            }
+
+            if (NPC.ai[3] == 2) //Attack Two, Charge
+            {
+                //NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X) + 0f;
+
+                NPC.ai[1] = 0;
+                NPC.ai[2]++; //Charging
+
+                Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * 2;
+
+                if (NPC.ai[2] == 1)//Start Dash
+                {
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                        NPC.velocity.X = velocity.X;
+                        NPC.velocity.Y = velocity.Y;
+                        rotation += 180; //New target is opposite where charged
+                        NPC.netUpdate = true;
+                    }
+                    SoundEngine.PlaySound(SoundID.NPCHit53 with { Volume = 1f, Pitch = -0.5f }, NPC.Center);
+
+                }
+                if (NPC.ai[2] > 1 && NPC.ai[2] < 15)//Accelerate
+                {
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                        NPC.velocity *= 1.18f;
+                        NPC.netUpdate = true;
+                    }
+                }
+                if (NPC.ai[2] > 35) //Decelerate 
+                {
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                        NPC.velocity *= 0.96f;
+                        NPC.netUpdate = true;
+                    }
+                }
+                counter++;
+
+                if (counter > 60)
+                {
+                    NPC.ai[0] = 0;//Reset all ai values
+                    NPC.ai[1] = 0;
+                    NPC.ai[2] = 0;
+                    counter = 0;
+
+                    NPC.ai[3]++;
+                    NPC.localAI[0] = 0;
+                    NPC.netUpdate = true;
+                }
+            }
+
+            if (NPC.ai[3] == 3) //Attack Three, Firenados
+            {
+                float projectileSpeed = 30f;
+                Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
+                Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
+                SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
+
+                Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<FirenadoBolt>(), damageFirenado, .5f);
+                Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(-perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<FirenadoBolt>(), damageFirenado, .5f);
+
+                NPC.ai[3]++;
+                NPC.localAI[0] = 0;
+                NPC.netUpdate = true;
+            }
+
+            if (NPC.ai[3] == 4) //Attack Four, Spawn Hatchlings
+            {
+                SpawnHatchlings();
+                if (counter >= 12 || Main.rand.NextBool(110))
+                {
+                    NPC.ai[0] = 0;//Reset all ai values
+                    NPC.ai[1] = 0;
+                    NPC.ai[2] = 0;
+                    NPC.ai[3]++;
+                    NPC.localAI[0] = 0;
+                    NPC.netUpdate = true;
+                    counter = 0;
+                }
+            }
+        }
+
+        public static int MinionCount()
+        {
+            int count = 3;
+            return count;
+        }
+
+        private void SpawnHatchlings()
+        {
+            int count = MinionCount();
+            var entitySource = NPC.GetSource_FromAI();
+
+            /*for (int i = 0; i < count; i++)
+            {
+                int index = NPC.NewNPC(entitySource, (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<Hatchling>(), NPC.whoAmI);
+                counter += 1;
+                NPC minionNPC = Main.npc[index];
+
+                // Finally, syncing, only sync on server and if the NPC actually exists (Main.maxNPCs is the index of a dummy NPC, there is no point syncing it)
+                if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+                {
+                    NetMessage.SendData(MessageID.SyncNPC, number: index);
+                }
+            }*/
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

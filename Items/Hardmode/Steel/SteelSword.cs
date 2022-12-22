@@ -18,8 +18,8 @@ namespace GalacticMod.Items.Hardmode.Steel
 		{
 			Item.damage = 82;
 			Item.DamageType = DamageClass.Melee;
-			Item.width = 50;
-			Item.height = 50;
+			Item.width = 54;
+			Item.height = 54;
 			Item.useTime = 20;
 			Item.useAnimation = 20;
 			Item.knockBack = 6;

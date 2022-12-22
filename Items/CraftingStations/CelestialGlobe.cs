@@ -24,7 +24,7 @@ namespace GalacticMod.Items.CraftingStations
 			AdjTiles = new int[] { 125, 101, 355, 243, 228, 94 }; //Crystal Ball, Bookcase, Alchemy Table, Imbuning Station, Dye Vat, Keg
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			if (frameX == 0)
 			{

@@ -1,11 +1,11 @@
 The Galactic Mod is a small content mod I've been working on for a while. It aims to add content where we feel the game needs more. This mod's goal is to flesh out underwhelming parts of the 
 game. We also aim to improve the Terraria experience, and make each experience a fresh one.
 
-It adds 300 new items for you to explore; including weapons, accessories, armors, tools, vanity and new blocks.
+There are over 300 new items for you to explore; including weapons, accessories, armors, tools, vanity and new blocks.
 
 The Galactic Mod adds:
  - 7 new potions
- - 20 new accessories
+ - 25 new accessories
  - 4 new crafting stations
  - 15 new armor sets with unique set bonuses
  - 4 new pets

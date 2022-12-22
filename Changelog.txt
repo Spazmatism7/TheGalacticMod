@@ -196,9 +196,10 @@ Weevil Poker projectiles face the way they're fired
 Spectre Bolts give off light
 Spectre Curse and Terra Burn debuffs gives off less dust
 Shortened Amaza Blade handle, but lengthed the blade
-Frost Blade's and Saxum's blades are longer
+Frost Blade's, Saxum's, and Steel Sword's blades are longer
 Molten Throwing Axe handle is longer
 Resprited Carbonite and Bone armor
+Steel Sword has a shorter handle
 
 [h3]Renaming[/h3]
 Renamed Lions Roar to Lion's Roar
@@ -257,6 +258,7 @@ Blood Droplets now have a 2% chance to drop a Strawberry
 Blade of the Eater is now additionally dropped by Eater of Souls, but only deals 30 damage
 
 [h3]Tooltips[/h3]
+Rewrote Scarab Sword tooltip
 Updated Hellflame Bow tooltip
 Gave Nautilus weapons tooltips
 Hellfire debuff tooltip now says 'This is fine'
@@ -275,14 +277,13 @@ Spawn with Starter Bag config no longer requires reload
 
 [h3]Misc.[/h3]
 Steel Bars are now sold by the Steampunker instead of being crafted
-Rewrote Scarab Sword description
 Reformated the description
-Treasure Bags now have Expert rarity
 Added support for Phase Indicator
 Rewrote Desert Spirit bestiary entry
 Made several changes to Gamemodes and activating items
     Gamemodes are Toggleable
     They cannot be used while a boss is alive
+    Gamemode items are no longer consumable
 Treasure Bags no longer uses an obsolete method, and glows when dropped
 Special item drops from bags no longer use an obsolete method
 The Armor Ability hotkey now presets as 'Q'
@@ -298,6 +299,7 @@ Fixed Enraged Star dropping
 Corrected Sprit's Wrath tooltip
 Blood Armor is now correctly green rarity
 Fixed the insane damage curve across difficulty modes for Galactic Peril and Asteroid Behemoth
+Treasure Bags now have Expert rarity
 Fixed Boss Checklist bugs
 Boss music now plays
 Fixed Hellfire Dragon animation
