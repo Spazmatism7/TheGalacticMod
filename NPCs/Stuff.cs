@@ -1,6 +1,5 @@
 ﻿using GalacticMod.NPCs.Bosses.PreHM;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

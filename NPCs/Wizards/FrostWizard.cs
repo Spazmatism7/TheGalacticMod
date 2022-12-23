@@ -1,23 +1,15 @@
 ﻿using GalacticMod.Items.Hardmode.Mage;
 using GalacticMod.Projectiles;
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Linq;
 using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
 using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
-using Terraria.DataStructures;
-using System.IO;
-using Terraria.GameContent.Generation;
-using Terraria.Localization;
-using Terraria.ModLoader.IO;
 
 namespace GalacticMod.NPCs.Wizards
 {

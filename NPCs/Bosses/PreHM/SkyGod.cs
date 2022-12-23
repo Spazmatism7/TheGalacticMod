@@ -1,31 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.Graphics.Effects;
-using System;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Bestiary;
 using GalacticMod.Items.PreHM.Star;
 using GalacticMod.Projectiles.Boss;
 using GalacticMod.Assets.Systems;
-using GalacticMod.Buffs;
 using Terraria.GameContent.ItemDropRules;
-using System.Runtime.CompilerServices;
-using ReLogic.Utilities;
-using Terraria.Chat;
-using Terraria.DataStructures;
-using Terraria.Enums;
-using Terraria.GameContent;
-using Terraria.GameContent.Achievements;
-using Terraria.Utilities;
-using System.IO;
-using Terraria.ModLoader.IO;
-using Terraria.ModLoader.Utilities;
 using GalacticMod.Items.Boss;
 
 namespace GalacticMod.NPCs.Bosses.PreHM
@@ -318,6 +300,7 @@ namespace GalacticMod.NPCs.Bosses.PreHM
 
             NPC.width = 92;
             NPC.height = 74;
+            NPC.npcSlots = 0f;
 
             NPC.aiStyle = 14;
             AIType = NPCID.Harpy;

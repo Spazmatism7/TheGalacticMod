@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using ReLogic.Utilities;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,42 +11,30 @@ using Terraria.Utilities;
 
 namespace GalacticMod.NPCs.CavernUnderworld
 {
-	public class BetsyBreathDragon : ModNPC
-	{
+    public class Hatchling : ModNPC
+    {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Baby Dragon");
-            Main.npcFrameCount[NPC.type] = 5;
+            DisplayName.SetDefault("Hatchling");
+            Main.npcFrameCount[NPC.type] = 4;
         }
 
         public override void SetDefaults()
-		{
-            Main.npcFrameCount[NPC.type] = 5;
+        {
+            Main.npcFrameCount[NPC.type] = 4;
             AnimationType = NPCID.FlyingSnake;
 
-            NPC.width = 70;
-            NPC.height = 88;
-            NPC.damage = 45;
-            NPC.defense = 15;
-            NPC.lifeMax = 400;
+            NPC.width = 56;
+            NPC.height = 92;
+            NPC.damage = 30;
+            NPC.defense = 0;
+            NPC.lifeMax = 100;
             NPC.lavaImmune = true;
             NPC.noGravity = true;
 
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.5f;
-		}
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-            if (!NPC.AnyNPCs(ModContent.NPCType<BetsyBreathDragon>()) && Main.hardMode)
-            {
-                return SpawnCondition.Underworld.Chance * 0.1f;
-            }
-            else
-            {
-                return 0f;
-            }
         }
 
         public override void AI()
@@ -75,7 +65,7 @@ namespace GalacticMod.NPCs.CavernUnderworld
             NPC.ai[2] = num33;
             if (NPC.ai[1] < num13)
             {
-                Vector2 vector4 = targetData.Center + new Vector2(num33 * (0f - 450f), -150);
+                Vector2 vector4 = targetData.Center + new Vector2(num33 * (0f - 500f), -200);
                 Vector2 vector5 = NPC.DirectionTo(vector4) * num12;
                 if (NPC.Distance(vector4) < num12)
                 {
@@ -93,7 +83,7 @@ namespace GalacticMod.NPCs.CavernUnderworld
             if (NPC.ai[1] == num13)
             {
                 int num34 = (targetData.Center.X > NPC.Center.X) ? 1 : (-1);
-                NPC.velocity = new Vector2(num34, 0f) * 10f;
+                NPC.velocity = new Vector2(num34, 0f) * 5f;
                 NPC.direction = NPC.spriteDirection = num34;
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {

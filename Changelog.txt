@@ -33,7 +33,7 @@ Added Shadowflame and Elemental Gauntlet accessories
 
 [h3]NPCs[/h3]
 Added a new Pre-Hardmode boss, Sky God
-Added Baby Dragon
+Added Hatchling, Fire-Spitter, Baby Dragon, and Shadow Dragon
 Added Bloody Aglamation
 Added a new miniboss the Mythical Wyvern
 Added a late Pre-Hardmode boss, Jörmungandr
@@ -240,6 +240,7 @@ Bars of Life always come last in recipes
 Removed Celestial Emblem and Celestial Shell from Otherworldly Insignia recipe
 Replaced Magic Quiver with Molten Quiver in Ranger Rune recipe
 Insignias are crafted at the Ancient Manipulator instead of The Infinity
+Changed Holy Weavers' material requirements
 
 [h3]Retiering[/h3]
 Blood Droplets only spawn post-EoC, but are more difficult

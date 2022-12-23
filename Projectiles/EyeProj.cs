@@ -36,7 +36,6 @@ namespace GalacticMod.Projectiles
         }
 
         int rotate;
-
         public override void AI()
         {
             rotate += 1;

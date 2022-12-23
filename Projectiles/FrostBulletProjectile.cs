@@ -41,8 +41,6 @@ namespace GalacticMod.Projectiles
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			//If collide with tile, reduce the penetrate.
-			//So the projectile can reflect at most 5 times
 			Projectile.penetrate--;
 			if (Projectile.penetrate <= 0)
 			{
@@ -80,7 +78,6 @@ namespace GalacticMod.Projectiles
 
 		public override void Kill(int timeLeft)
 		{
-			// This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
 			Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
 			SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
 		}

@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using GalacticMod.Buffs;
 
 namespace GalacticMod.Projectiles
 {
@@ -45,7 +46,7 @@ namespace GalacticMod.Projectiles
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			target.AddBuff(ModContent.BuffType<Buffs.SpiritCurse>(), 5 * 60);
+			target.AddBuff(ModContent.BuffType<SpiritCurse>(), 5 * 60);
 		}
 	}
 }

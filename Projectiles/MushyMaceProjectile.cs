@@ -31,6 +31,7 @@ namespace GalacticMod.Projectiles
             get => (AIState)Projectile.ai[0];
             set => Projectile.ai[0] = (float)value;
         }
+
         public ref float StateTimer => ref Projectile.ai[1];
         public ref float CollisionCounter => ref Projectile.localAI[0];
         public ref float SpinningStateTimer => ref Projectile.localAI[1];

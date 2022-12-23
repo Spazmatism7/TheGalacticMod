@@ -74,9 +74,7 @@ namespace GalacticMod.Projectiles
                 changeFrame = false;
             }
             else
-            {
                 changeFrame = true;
-            }
 
             Lighting.AddLight(Projectile.Center, 1.1f, 0.3f, 0.4f);
         }

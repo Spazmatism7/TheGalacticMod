@@ -1,40 +1,27 @@
-﻿using GalacticMod.Items;
-using GalacticMod.Projectiles;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
 using System;
-using System.IO;
 using GalacticMod.Assets.Systems;
 using Terraria.Audio;
-using GalacticMod;
 using Terraria.GameContent.Bestiary;
-using System.Collections.Generic;
 using GalacticMod.Items.PostML.Hellfire;
 using GalacticMod.Projectiles.Boss;
 using Terraria.GameContent.ItemDropRules;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GalacticMod.Assets;
 using GalacticMod.Items.Boss;
 using GalacticMod.Items.Boss.Master;
-using System.Runtime.InteropServices;
+using GalacticMod.NPCs.CavernUnderworld;
 
 namespace GalacticMod.NPCs.Bosses.PostML
 {
     [AutoloadBossHead]
     public class HellfireDragon : ModNPC
     {
-        private bool halfHealth = false;
-        private bool enraged = false;
         int counter = 0;
         float rotation;
+        bool firenadoNegative = false;
 
         private enum phases 
         {
@@ -129,14 +116,8 @@ namespace GalacticMod.NPCs.Bosses.PostML
 
             if (!player.ZoneUnderworldHeight)
             {
-                enraged = true;
                 NPC.defense = 999999;
                 NPC.damage = 999999;
-            }
-
-            if (NPC.life < NPC.lifeMax / 2)
-            {
-                halfHealth = true;
             }
 
             if (Main.player[NPC.target].position.X < NPC.position.X)
@@ -169,87 +150,6 @@ namespace GalacticMod.NPCs.Bosses.PostML
 
             NPC.ai[0]++;
 
-            /*if (Main.rand.NextBool(10))
-            {
-                if (NPC.ai[0] >= 10 && !Main.expertMode)
-                {
-                    if (enraged)
-                    {
-                        float projectileSpeed = 21f;
-                        Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
-                        Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
-
-                        int damageFireball = 9999999;
-                        int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<Fireball>(), damageFireball, .5f, 0);
-                        //NPC.GetSpawnSource_ForProjectile()
-                    }
-                    else if (halfHealth)
-                    {
-                        float projectileSpeed = 21f;
-                        Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
-                        Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
-
-                        int damageFireball = 75;
-                        int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<Fireball>(), damageFireball, .5f, 0);
-                        //NPC.GetSpawnSource_ForProjectile()
-                    }
-                    else
-                    {
-                        float projectileSpeed = 20f;
-                        Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
-                        Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
-
-                        int damageFireball = 50;
-                        int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<Fireball>(), damageFireball, .5f, 0);
-                        //NPC.GetSpawnSource_ForProjectile()
-
-                    }
-                    SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
-                }
-
-                if (Main.expertMode && NPC.ai[0] >= 10)
-                {
-                    float projectileSpeed = 20f;
-                    Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
-                    Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
-                    if (enraged)
-                    {
-                        int damageFireball = 9999999;
-                        int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<Fireball>(), damageFireball, .5f, 0);
-                        //NPC.GetSpawnSource_ForProjectile()
-                    }
-                    else if (halfHealth)
-                    {
-                        int damageExpertFireball = 100;
-                        int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<Fireball>(), damageExpertFireball, .5f, 0);
-                        //NPC.GetSpawnSource_ForProjectile()
-                    }
-                    else
-                    {
-                        int damageExpertFireball = 75;
-                        int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ModContent.ProjectileType<Fireball>(), damageExpertFireball, .5f, 0);
-                        //NPC.GetSpawnSource_ForProjectile()
-                    }
-                    SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
-                }
-            }
-
-            if (Main.rand.NextBool(240))
-            {
-                if (NPC.ai[0] >= 10)
-                {
-                    float projectileSpeed = 30f;
-                    Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
-                    Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
-                    int damageFirenado = 200;
-                    SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
-
-                    int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y),
-                    ModContent.ProjectileType<FirenadoBolt>(), damageFirenado, .5f, 0);
-                    //NPC.GetSpawnSource_ForProjectile()
-                }
-            }*/
-
             if (!player.dead)
             {
                 Attacks(player); //All attacks are in this hook
@@ -278,9 +178,10 @@ namespace GalacticMod.NPCs.Bosses.PostML
                     Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<Fireball>(), damageFireball, .5f, 0);
                     //NPC.GetSpawnSource_ForProjectile()
                     SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
+                    counter++;
                 }
 
-                if (Main.rand.NextBool(200) || counter > 20)
+                if (Main.rand.NextBool(200) || counter > 30)
                 {
                     NPC.ai[0] = 0;//Reset all ai values
                     NPC.ai[1] = 0;
@@ -352,18 +253,25 @@ namespace GalacticMod.NPCs.Bosses.PostML
                 Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
                 SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
 
-                Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<FirenadoBolt>(), damageFirenado, .5f);
-                Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(-perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<FirenadoBolt>(), damageFirenado, .5f);
-
+                if (firenadoNegative)
+                    Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(-perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<FirenadoBolt>(), damageFirenado, .5f);
+                else
+                    Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<FirenadoBolt>(), damageFirenado, .5f);
+                 
                 NPC.ai[3]++;
                 NPC.localAI[0] = 0;
                 NPC.netUpdate = true;
+
+                if (firenadoNegative)
+                    firenadoNegative = false;
+                else
+                    firenadoNegative = true;
             }
 
             if (NPC.ai[3] == 4) //Attack Four, Spawn Hatchlings
             {
                 SpawnHatchlings();
-                if (counter >= 12 || Main.rand.NextBool(110))
+                if (counter >= 3)
                 {
                     NPC.ai[0] = 0;//Reset all ai values
                     NPC.ai[1] = 0;
@@ -387,18 +295,17 @@ namespace GalacticMod.NPCs.Bosses.PostML
             int count = MinionCount();
             var entitySource = NPC.GetSource_FromAI();
 
-            /*for (int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
                 int index = NPC.NewNPC(entitySource, (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<Hatchling>(), NPC.whoAmI);
                 counter += 1;
-                NPC minionNPC = Main.npc[index];
 
                 // Finally, syncing, only sync on server and if the NPC actually exists (Main.maxNPCs is the index of a dummy NPC, there is no point syncing it)
                 if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
                 {
                     NetMessage.SendData(MessageID.SyncNPC, number: index);
                 }
-            }*/
+            }
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

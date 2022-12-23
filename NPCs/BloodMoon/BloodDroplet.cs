@@ -1,14 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.GameContent;
+﻿using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
 using GalacticMod.Items.PreHM.Blood;
 using GalacticMod.Items.Consumables;

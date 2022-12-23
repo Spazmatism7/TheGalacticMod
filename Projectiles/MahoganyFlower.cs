@@ -45,6 +45,7 @@ namespace GalacticMod.Projectiles
 				Projectile.velocity *= 0.75f;
 				SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
 			}
+
 			return false;
 		}
 

@@ -53,12 +53,13 @@ namespace GalacticMod.Items.Accessories
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = Recipe.Create(ModContent.ItemType<HolyWeavers>());
+			Recipe recipe = Recipe.Create(ItemType<HolyWeavers>());
 			recipe.AddIngredient(ItemID.TerrasparkBoots);
 			recipe.AddIngredient(ItemID.AmphibianBoots);
-			recipe.AddIngredient(ItemID.UnicornHorn, 10); //Unicorn Horns
-			recipe.AddIngredient(ItemID.PixieDust, 20); //Pixie Dust
-			recipe.AddIngredient(ItemID.SoulofLight, 10); //Souls of Light
+			recipe.AddIngredient(ItemID.CrystalShard, 16);
+			recipe.AddIngredient(ItemID.UnicornHorn, 7); //Unicorn Horns
+			recipe.AddIngredient(ItemID.PixieDust, 16); //Pixie Dust
+			recipe.AddIngredient(ItemID.SoulofLight, 9); //Souls of Light
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}

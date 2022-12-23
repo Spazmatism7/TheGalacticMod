@@ -51,6 +51,7 @@ namespace GalacticMod.Projectiles
 
             }
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);

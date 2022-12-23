@@ -41,16 +41,11 @@ namespace GalacticMod.Projectiles
 
             Lighting.AddLight(Projectile.Center, ((255 - Projectile.alpha) * 0.1f) / 255f, ((255 - Projectile.alpha) * 0.1f) / 255f, ((255 - Projectile.alpha) * 0.1f) / 255f);   //this is the light colors
             if (Projectile.timeLeft > 125)
-            {
                 Projectile.timeLeft = 125;
-            }
-            if (Projectile.ai[0] > 0f)  //this defines where the flames starts
-            {
-            }
-            else
-            {
+
+            if (!(Projectile.ai[0] > 0f))
                 Projectile.ai[0] += 1f;
-            }
+
             if (Projectile.localAI[0] == 0f)
             {
                 AdjustMagnitude(ref Projectile.velocity);
@@ -89,9 +84,7 @@ namespace GalacticMod.Projectiles
         {
             float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
             if (magnitude > 4f)
-            {
                 vector *= 4f / magnitude;
-            }
         }
     }
 }

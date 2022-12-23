@@ -5,12 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
-using Terraria.GameContent.Events;
-using GalacticMod.Items.Old;
-using GalacticMod.Assets.Systems;
 
 namespace GalacticMod.NPCs.Bosses.PostML
 {

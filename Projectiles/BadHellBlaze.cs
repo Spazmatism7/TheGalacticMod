@@ -119,10 +119,7 @@ namespace GalacticMod.Projectiles
             target.AddBuff(BuffID.OnFire, 420);
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            return false;
-        }
+        public override bool OnTileCollide(Vector2 oldVelocity) => false;
 
         public override void Kill(int timeLeft)
         {
@@ -275,10 +272,7 @@ namespace GalacticMod.Projectiles
             }
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            return false;
-        }
+        public override bool OnTileCollide(Vector2 oldVelocity) => false;
 
         public override void Kill(int timeLeft)
         {
@@ -310,7 +304,7 @@ namespace GalacticMod.Projectiles
             {
                 Dust dust;
                 Vector2 position = Projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, Projectile.width, Projectile.height, DustID.Cloud, 0f, 0f, 0, default, 1f)];
+                dust = Main.dust[Dust.NewDust(position, Projectile.width, Projectile.height, DustID.Cloud, 0f, 0f, 0, default, 1f)];
                 dust.noGravity = true;
                 dust.scale = 1f;
             }
