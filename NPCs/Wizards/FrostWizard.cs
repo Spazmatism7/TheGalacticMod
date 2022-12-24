@@ -211,5 +211,17 @@ namespace GalacticMod.NPCs.Wizards
 		{
 			npcLoot.Add(ItemDropRule.Common(ItemType<IcicleStorm>(), 10));
 		}
-	}
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_11").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Blood);
+                }
+            }
+        }
+    }
 }

@@ -852,7 +852,7 @@ namespace GalacticMod.NPCs.Bosses.PostML
 
                 if (NPC.ai[3] == 6) //Attack 6, Bluefire Sphere
                 {
-                    int damage = 150;
+                    //int damage = 150;
 
                     float projectileSpeed = 22f;
                     Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
@@ -985,6 +985,22 @@ namespace GalacticMod.NPCs.Bosses.PostML
         {
             potionType = ItemID.SuperHealingPotion;
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_52").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_53").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_54").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_55").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_56").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Vortex);
+                }
+            }
+        }
     }
 
     [AutoloadBossHead]
@@ -997,8 +1013,8 @@ namespace GalacticMod.NPCs.Bosses.PostML
 
         public override void SetDefaults()
         {
-            NPC.width = 120;
-            NPC.height = 77;
+            NPC.width = 168;
+            NPC.height = 184;
 
             NPC.boss = true;
             NPC.aiStyle = 49;
@@ -1106,6 +1122,19 @@ namespace GalacticMod.NPCs.Bosses.PostML
         {
             potionType = ItemID.Heart;
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Cloud);
+                }
+
+                Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Cloud);
+            }
+        }
     }
 
     public class GalacticDasher : ModNPC
@@ -1177,13 +1206,24 @@ namespace GalacticMod.NPCs.Bosses.PostML
                 " servants of the Galactic Peril")
             });
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_49").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_50").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_51").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Vortex);
+                }
+            }
+        }
     }
 
     public class AncientDemon : ModNPC
     {
-        int timer;
-        int fireTime = 3;
-
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 5;
@@ -1239,6 +1279,19 @@ namespace GalacticMod.NPCs.Bosses.PostML
 				// Sets the description of this NPC that is listed in the bestiary.
 				new FlavorTextBestiaryInfoElement("An ancient being from a realm long gone")
             });
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_46").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_47").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.MartianHit);
+                }
+            }
         }
     }
 }

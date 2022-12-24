@@ -310,6 +310,18 @@ namespace GalacticMod.NPCs.Bosses.PostML
             spriteBatch.Draw(texture, new Vector2(NPC.position.X - Main.screenPosition.X + (NPC.width / 2) - texture.Width * NPC.scale / 2f + origin.X * NPC.scale, NPC.position.Y - Main.screenPosition.Y + NPC.height - texture.Height * NPC.scale + 4f + origin.Y * NPC.scale + 56f), new Rectangle?(NPC.frame), drawColor, NPC.rotation, origin, NPC.scale, effects, 0f);
             return false;
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_48").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.MartianHit);
+                }
+            }
+        }
     }
 
     public class CosmicWyvernBody : ModNPC
@@ -382,6 +394,18 @@ namespace GalacticMod.NPCs.Bosses.PostML
             if (NPC.spriteDirection == 1) effects = SpriteEffects.FlipHorizontally;
             spriteBatch.Draw(texture, new Vector2(NPC.position.X - Main.screenPosition.X + (NPC.width / 2) - texture.Width * NPC.scale / 2f + origin.X * NPC.scale, NPC.position.Y - Main.screenPosition.Y + NPC.height - texture.Height * NPC.scale + 4f + origin.Y * NPC.scale + 56f), new Rectangle?(NPC.frame), drawColor, NPC.rotation, origin, NPC.scale, effects, 0f);
             return false;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_48").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.MartianHit);
+                }
+            }
         }
     }
 
@@ -456,6 +480,18 @@ namespace GalacticMod.NPCs.Bosses.PostML
             spriteBatch.Draw(texture, new Vector2(NPC.position.X - Main.screenPosition.X + (NPC.width / 2) - texture.Width * NPC.scale / 2f + origin.X * NPC.scale, NPC.position.Y - Main.screenPosition.Y + NPC.height - texture.Height * NPC.scale + 4f + origin.Y * NPC.scale + 56f), new Rectangle?(NPC.frame), drawColor, NPC.rotation, origin, NPC.scale, effects, 0f);
             return false;
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_48").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.MartianHit);
+                }
+            }
+        }
     }
 
     public class CosmicWyvernBody3 : ModNPC
@@ -528,6 +564,18 @@ namespace GalacticMod.NPCs.Bosses.PostML
             if (NPC.spriteDirection == 1) effects = SpriteEffects.FlipHorizontally;
             spriteBatch.Draw(texture, new Vector2(NPC.position.X - Main.screenPosition.X + (NPC.width / 2) - texture.Width * NPC.scale / 2f + origin.X * NPC.scale, NPC.position.Y - Main.screenPosition.Y + NPC.height - texture.Height * NPC.scale + 4f + origin.Y * NPC.scale + 56f), new Rectangle?(NPC.frame), drawColor, NPC.rotation, origin, NPC.scale, effects, 0f);
             return false;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_48").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.MartianHit);
+                }
+            }
         }
     }
 

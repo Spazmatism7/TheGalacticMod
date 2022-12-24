@@ -94,6 +94,7 @@ Beetle Spear lasers fire sporatically
 Reworked Luminite Dagger
 Saxum projectiles now roll on contact with tiles, instead of being killed
 Carbonite no longer spawns as an ore, instead it drops from enemies
+Reworked Hellfire Dragon
 
 [h3]Rebalances[/h3]
 Steel Bars are now sold for 40 silver
@@ -149,6 +150,8 @@ Beetle Sword useTime increased from 20 to 30, but shootSpeed doubled
 Weevil Poker projectiles now die after 3 seconds
 Hellfire Arrows fired from Shadowshot now have 2.5x knockback
 Icy Crypt is bigger, but no longer fires a projectile from the sky
+Increased Iridium Sword critical strike chance from 4 to 6
+Reduced Hell's Blaze mana cost to 10, but reduced its damage to 40
 
 [h3]Graphic Changes[/h3]
 Resprited Titanium Shortsword
@@ -196,10 +199,15 @@ Weevil Poker projectiles face the way they're fired
 Spectre Bolts give off light
 Spectre Curse and Terra Burn debuffs gives off less dust
 Shortened Amaza Blade handle, but lengthed the blade
-Frost Blade's, Saxum's, and Steel Sword's blades are longer
+Frost Blade's, Saxum's, Steel Sword's, and Iridium Sword's blades are longer
 Molten Throwing Axe handle is longer
 Resprited Carbonite and Bone armor
 Steel Sword has a shorter handle
+Enraged Star explodes into dust on death
+Enemies drop gore upon death
+Resprited The Storm
+Resprited Terra Bolt
+Recolored Brightcore Staff
 
 [h3]Renaming[/h3]
 Renamed Lions Roar to Lion's Roar

@@ -356,6 +356,17 @@ namespace GalacticMod.NPCs.Bosses.Hardmode
         {
             potionType = ItemID.GreaterHealingPotion;
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_42").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_43").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_44").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_45").Type, 1f);
+            }
+        }
     }
 
     public class AsteroidServant : ModNPC
@@ -436,5 +447,13 @@ namespace GalacticMod.NPCs.Bosses.Hardmode
         }
 
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit) => target.AddBuff(BuffType<AsteroidBlaze>(), 7 * 60);
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_41").Type, 1f);
+            }
+        }
     }
 }

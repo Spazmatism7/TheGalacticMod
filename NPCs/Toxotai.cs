@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.ItemDropRules;
+using Microsoft.Xna.Framework;
 
 namespace GalacticMod.NPCs
 {
@@ -45,6 +46,18 @@ namespace GalacticMod.NPCs
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.Gladius, 20));
             npcLoot.Add(ItemDropRule.Common(ItemID.Pizza, 20));
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_13").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Blood);
+                }
+            }
         }
     }
 }

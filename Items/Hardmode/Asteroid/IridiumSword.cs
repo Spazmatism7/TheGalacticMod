@@ -22,12 +22,13 @@ namespace GalacticMod.Items.Hardmode.Asteroid
         {
             Item.damage = 72;
             Item.DamageType = DamageClass.Melee; //melee weapon
-            Item.width = 44;
-            Item.height = 44;
+            Item.width = 50;
+            Item.height = 50;
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6;
+            Item.crit = 2;
             Item.value = 1000; //sell value
             Item.rare = ItemRarityID.LightPurple;
             Item.UseSound = SoundID.Item1;

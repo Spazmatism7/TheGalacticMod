@@ -20,9 +20,9 @@ namespace GalacticMod.Items.Hardmode.Mage
 
 		public override void SetDefaults()
 		{
-			Item.damage = 45;
+			Item.damage = 40;
 			Item.DamageType = DamageClass.Magic;
-			Item.mana = 15;
+			Item.mana = 10;
 			Item.width = 26;
 			Item.height = 26;
 			Item.useTime = 20;

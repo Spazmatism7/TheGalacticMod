@@ -72,13 +72,18 @@ namespace GalacticMod.NPCs.Old
 			return false;
 		}
 
-		public override void HitEffect(int hitDirection, double damage) {
-			if (NPC.life <= 0) {
-				for (int i = 0; i < 4; i++)
-					Gore.NewGore(NPC.GetSource_Death(), NPC.position, Vector2.Zero, Main.rand.Next(61, 64), 1f);		
-			}
-		}
-	}
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_23").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Blood);
+                }
+            }
+        }
+    }
 
     public class MythicalWyvernBody2 : ModNPC
     {
@@ -154,10 +159,13 @@ namespace GalacticMod.NPCs.Old
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (NPC.life <= 0)
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
             {
-                for (int i = 0; i < 4; i++)
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, Vector2.Zero, Main.rand.Next(61, 64), 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_23").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Blood);
+                }
             }
         }
     }
@@ -236,10 +244,13 @@ namespace GalacticMod.NPCs.Old
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (NPC.life <= 0)
+            if (NPC.life <= 0)          //this make so when the NPC has 0 life(dead) he will spawn this
             {
-                for (int i = 0; i < 4; i++)
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, Vector2.Zero, Main.rand.Next(61, 64), 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("Gore_23").Type, 1f);
+                for (int i = 0; i < 10; i++)
+                {
+                    Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Blood);
+                }
             }
         }
     }

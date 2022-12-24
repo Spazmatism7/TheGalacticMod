@@ -102,5 +102,19 @@ namespace GalacticMod.NPCs.Sky
 			npcLoot.Add(ItemDropRule.Common(ItemType<Stardust>(), 1, 1, 3));
             npcLoot.Add(ItemDropRule.Common(ItemID.FallenStar, 2));
         }
-	}
+
+        public override void OnKill()
+        {
+            for (int i = 0; i < 16; i++)
+            {
+                Dust dST = Dust.NewDustPerfect(NPC.Center, 15);
+                dST.frame.Y = 0;
+                dST.velocity *= 2;
+
+                Dust dS = Dust.NewDustPerfect(NPC.Center, DustID.YellowStarDust);
+                dS.frame.Y = 0;
+                dS.velocity *= 2;
+            }
+        }
+    }
 }
