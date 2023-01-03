@@ -35,6 +35,7 @@ namespace GalacticMod.NPCs.Bosses.Hardmode
         {
             Main.npcFrameCount[NPC.type] = 6;
             NPCID.Sets.BossBestiaryPriority.Add(Type);
+            NPCID.Sets.MPAllowedEnemies[Type] = true;
         }
 
         public override void SetDefaults()
@@ -94,7 +95,7 @@ namespace GalacticMod.NPCs.Bosses.Hardmode
             NPC.buffImmune[BuffID.CursedInferno] = true;
             NPC.buffImmune[BuffID.Frostburn] = true;
 
-            if (NPC.life < NPC.life / 2)
+            if (NPC.life < NPC.life / 2 && Main.expertMode)
                 secondForm = true;
 
             if (!player.active || player.dead)
@@ -200,7 +201,7 @@ namespace GalacticMod.NPCs.Bosses.Hardmode
 
             if (NPC.ai[3] == 2) //Attack 2, Spawn Servants
             {
-                SpawnDashers();
+                SpawnServants();
                 if (servant >= 5 || Main.rand.NextBool(100))
                 {
                     NPC.ai[0] = 0;//Reset all ai values
@@ -248,7 +249,7 @@ namespace GalacticMod.NPCs.Bosses.Hardmode
             return count;
         }
 
-        private void SpawnDashers()
+        private void SpawnServants()
         {
             int count = MinionCount();
             var entitySource = NPC.GetSource_FromAI();
@@ -297,32 +298,30 @@ namespace GalacticMod.NPCs.Bosses.Hardmode
         public override void FindFrame(int frameHeight)//Animations
         {
             NPC.frame.Y = npcframe * frameHeight;
+            NPC.frameCounter++;
 
-            //NPC.spriteDirection = NPC.direction;
-            if (!secondForm)
+            if (!secondForm) //above half health
             {
-                NPC.frameCounter++;
                 if (NPC.frameCounter > 3)
                 {
                     npcframe++;
                     NPC.frameCounter = 0;
                 }
-                if (npcframe >= 3) //Cycles through frames 0-5 for still claws
+                if (npcframe >= 3) //Cycles through frames 0-3 for non attacking
                 {
                     npcframe = 0;
                 }
             }
-            else if (secondForm)
+            if (secondForm)
             {
-                NPC.frameCounter++;
                 if (NPC.frameCounter > 3)
                 {
                     npcframe++;
                     NPC.frameCounter = 0;
                 }
-                if (npcframe <= 3 || npcframe >= 6)
+                if (npcframe <= 3 || npcframe >= 7) //Cycles through frames 4-6 on last phase
                 {
-                    npcframe = 4;
+                    npcframe = 8;
                 }
             }
         }

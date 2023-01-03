@@ -12,7 +12,7 @@ using Terraria.GameContent.Events;
 using GalacticMod.Items.Old;
 using GalacticMod.Assets.Systems;
 
-namespace GalacticMod.NPCs.Old
+namespace GalacticMod.NPCs.Legacy
 {
     public class MythicalWyvernHead : ModNPC 
 	{

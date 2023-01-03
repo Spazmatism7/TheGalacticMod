@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using GalacticMod.Items.PreHM.Blood;
 using Microsoft.Xna.Framework;
+using GalacticMod.NPCs.Banners;
 
 namespace GalacticMod.NPCs.BloodMoon
 {
@@ -34,6 +35,8 @@ namespace GalacticMod.NPCs.BloodMoon
 
             NPC.HitSound = SoundID.NPCHit7;
             NPC.DeathSound = SoundID.NPCDeath43;
+            Banner = NPC.type;
+            BannerItem = ItemType<BloodAglamationBanner>();
             NPC.value = Item.buyPrice(0, 0, 25, 0);
         }
 

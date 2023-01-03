@@ -23,6 +23,9 @@ namespace GalacticMod.NPCs.Bosses.PreHM
 		public int timerSC;
 		public int timerM;
 		public int minions;
+		public bool doAttacks = true;
+		public int timerE;
+		public int eCount;
 
 		public int timer;
 
@@ -124,80 +127,146 @@ namespace GalacticMod.NPCs.Bosses.PreHM
 			timerSB++;
 			timerSC++;
 			timerM++;
+			timerE++;
 
-			if (timerSB >= 2 * 60)
+			if (doAttacks)
 			{
-				float knockBack = 5f;
-				int rotationVar = 180;
-				bool rotationBool = false;
-
-				if (rotationBool)
+                if (timerSB >= 2 * 60)
                 {
-					if (rotationVar >= 180)
-						rotationVar = 90;
-					if (rotationVar <= 90)
-						rotationVar = 180;
-					rotationBool = false;
+                    float knockBack = 5f;
+                    int rotationVar = 180;
+                    bool rotationBool = false;
+
+                    if (rotationBool)
+                    {
+                        if (rotationVar >= 180)
+                            rotationVar = 90;
+                        if (rotationVar <= 90)
+                            rotationVar = 180;
+                        rotationBool = false;
+                    }
+
+                    if (NPC.ai[0] >= 10 && !Main.expertMode)
+                    {
+                        int damageSandball = 15;
+                        float numberProjectiles = 5;
+                        float rotation = MathHelper.ToRadians(rotationVar);
+
+                        for (int i = 0; i < numberProjectiles; i++)
+                        {
+                            float speedX = 4f;
+                            float speedY = 0f;
+                            Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
+                            Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<SandBlast>(), damageSandball, knockBack);
+                            //Projectile.GetProjectileSource_FromThis()
+                        }
+                        SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
+                        rotationBool = true;
+                    }
+
+                    if (Main.expertMode && NPC.ai[0] >= 10)
+                    {
+                        int damageSandball = 18;
+                        float numberProjectiles = 6;
+                        float rotation = MathHelper.ToRadians(rotationVar);
+
+                        for (int i = 0; i < numberProjectiles; i++)
+                        {
+                            float speedX = 5f;
+                            float speedY = 0f;
+                            Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
+                            Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<SandBlast>(), damageSandball, knockBack);
+                            //Projectile.GetProjectileSource_FromThis()
+                        }
+                        SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
+                        rotationBool = true;
+                    }
+
+                    timerSB = 0;
                 }
 
-				if (NPC.ai[0] >= 10 && !Main.expertMode)
+                if (timerSC >= 5 * 60)
+                {
+                    float projectileSpeed = 21f;
+                    Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
+                    Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
+
+                    int damageCloud = 20;
+                    int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<SandCloud>(), damageCloud, .5f, 0);
+                    //NPC.GetSpawnSource_ForProjectile()
+
+                    timerSC = 0;
+                }
+
+                if (timerM >= 10 * 60)
+                {
+                    SpawnMinions();
+
+                    timerM = 0;
+                }
+            }
+
+			if (timerE >= 120 && Main.expertMode)
+            {
+                doAttacks = false;
+
+                float velocity;
+				int projCount;
+                if (Main.masterMode) //Projectile changes
+                {
+                    velocity = 15f;
+                    projCount = 4;
+                }
+                else
+                {
+                    velocity = 13f;
+                    projCount = 3;
+                }
+
+                NPC.ai[0]++;
+                if (NPC.ai[0] > 20) //telegraphing
+                {
+                    float speedY = -3f;
+                    Vector2 dustspeed = new Vector2(0, speedY).RotatedByRandom(MathHelper.ToRadians(360));
+                    int dust = Dust.NewDust(NPC.Center, 0, 0, DustID.Sandnado, dustspeed.X + NPC.velocity.X, dustspeed.Y + NPC.velocity.Y, 100, default, 1f);
+                    Main.dust[dust].noGravity = true;
+
+                    int dust2 = Dust.NewDust(NPC.Center, 0, 0, DustID.Sandnado, 0 + NPC.velocity.X, velocity + NPC.velocity.Y, 100, default, 1f);
+                    Main.dust[dust2].noGravity = true;
+                }
+
+                if (NPC.ai[0] > 40)
+                {
+                    SoundEngine.PlaySound(SoundID.Item20 with { Volume = 1.5f, Pitch = 00f }, NPC.Center);
+                    for (int i = 0; i < 50; i++)
+                    {
+                        float speedY = -3f;
+
+                        Vector2 dustspeed = new Vector2(0, speedY).RotatedByRandom(MathHelper.ToRadians(360));
+
+                        int dust2 = Dust.NewDust(NPC.Center, 0, 0, DustID.Sandnado, dustspeed.X, dustspeed.Y, 100, default, 1f);
+                        Main.dust[dust2].noGravity = true;
+                    }
+
+                    for (int i = 0; i < projCount; i++)
+                    {
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
+                        {
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), new Vector2(player.Center.X + Main.rand.Next(-350, 350), player.Center.Y - 600), new Vector2(0, velocity),
+                            ProjectileType<SandDrip>(), NPC.damage, 1, Main.myPlayer, 0, 0);
+                        }
+                    }
+                    NPC.ai[0] = 0;
+					eCount++;
+                }
+
+				if (eCount > 1)
 				{
-					int damageSandball = 15;
-					float numberProjectiles = 5;
-					float rotation = MathHelper.ToRadians(rotationVar);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						float speedX = 4f;
-						float speedY = 0f;
-						Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
-						Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<SandBlast>(), damageSandball, knockBack);
-						//Projectile.GetProjectileSource_FromThis()
-					}
-					SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
-					rotationBool = true;
-				}
-
-				if (Main.expertMode && NPC.ai[0] >= 10)
-				{
-					int damageSandball = 18;
-					float numberProjectiles = 6;
-					float rotation = MathHelper.ToRadians(rotationVar);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						float speedX = 5f;
-						float speedY = 0f;
-						Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
-						Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<SandBlast>(), damageSandball, knockBack);
-						//Projectile.GetProjectileSource_FromThis()
-					}
-					SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
-					rotationBool = true;
-				}
-
-				timerSB = 0;
-			}
-
-			if (timerSC >= 5 * 60)
-			{
-				float projectileSpeed = 21f;
-				Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(NPC.Center.X, NPC.Center.Y)) * projectileSpeed;
-				Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10));
-
-				int damageCloud = 20;
-				int projID = Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(perturbedSpeed.X, perturbedSpeed.Y), ProjectileType<SandCloud>(), damageCloud, .5f, 0);
-				//NPC.GetSpawnSource_ForProjectile()
-
-				timerSC = 0;
-			}
-
-			if (timerM >= 10 * 60)
-			{
-				SpawnMinions();
-
-				timerM = 0;
-			}
+					timerE = 0;
+					eCount = 0;
+                    doAttacks = true;
+                }
+            }
 		}
 
 		private void Movement(Vector2 target)
@@ -228,7 +297,10 @@ namespace GalacticMod.NPCs.Bosses.PreHM
 
 		private void SpawnMinions()
 		{
-			int count = 5;
+			int count = 2;
+			if (Main.expertMode)
+				count = 3;
+
 			var entitySource = NPC.GetSource_FromAI();
 
 			for (int i = 0; i < count; i++)

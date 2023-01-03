@@ -342,21 +342,6 @@ namespace GalacticMod.NPCs.Bosses.PostML
             }
         }
 
-        private void MoveTowards(NPC NPC, Vector2 target, float speed, float turnResistance) 
-        {
-            var move = target - NPC.Center;
-            float length = move.Length();
-            if (length > speed) {
-                move *= speed / length;
-            }
-            move = (NPC.velocity * turnResistance + move) / (turnResistance + 1f);
-            length = move.Length();
-            if (length > speed) {
-                move *= speed / length;
-            }
-            NPC.velocity = move;
-        }
-
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             if (Main.masterMode)

@@ -152,13 +152,13 @@ Hellfire Arrows fired from Shadowshot now have 2.5x knockback
 Icy Crypt is bigger, but no longer fires a projectile from the sky
 Increased Iridium Sword critical strike chance from 4 to 6
 Reduced Hell's Blaze mana cost to 10, but reduced its damage to 40
+Reduced amount of enemies spawned by Desert Spirit and homing velocity of Sandstorm projectile
 
 [h3]Graphic Changes[/h3]
 Resprited Titanium Shortsword
 Animated Hell's Blaze projectile
 Amaza Wings now glow
 Substantially altered and animated Lion's Roar sprite
-Resprited Silver Slime
 Resprited Scarab Sword
 Recolored Desert Spirit Bag
 Animated Cyan Slime

@@ -35,13 +35,13 @@ namespace GalacticMod.Items.PreHM.Mage
 			Item.UseSound = SoundID.Item20;
 			Item.rare = ItemRarityID.Orange;
 			Item.autoReuse = true;
-			Item.shoot = ModContent.ProjectileType<NightBeam>();
+			Item.shoot = ProjectileType<NightBeam>();
 			Item.shootSpeed = 18f;
 		}
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = Recipe.Create(ModContent.ItemType<NightStaff>());
+			Recipe recipe = Recipe.Create(ItemType<NightStaff>());
 			recipe.AddIngredient(ItemID.WandofSparking);
 			recipe.AddRecipeGroup("GalacticMod:EvilStaff");
 			recipe.AddIngredient(ItemID.AquaScepter);

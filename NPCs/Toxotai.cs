@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.ItemDropRules;
 using Microsoft.Xna.Framework;
+using GalacticMod.NPCs.Banners;
 
 namespace GalacticMod.NPCs
 {
@@ -31,6 +32,8 @@ namespace GalacticMod.NPCs
 
             NPC.HitSound = SoundID.NPCHit2;
             NPC.DeathSound = SoundID.NPCDeath2;
+            Banner = NPC.type;
+            BannerItem = ModContent.ItemType<ToxotaiBanner>();
             NPC.value = 400f;
         }
 

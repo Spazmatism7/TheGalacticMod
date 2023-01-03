@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using GalacticMod.Items.PreHM.Blood;
 using GalacticMod.Items.Consumables;
+using GalacticMod.NPCs.Banners;
 
 namespace GalacticMod.NPCs.BloodMoon
 {
@@ -30,9 +31,9 @@ namespace GalacticMod.NPCs.BloodMoon
 			NPC.aiStyle = 1;
 			AIType = 1;
 			AnimationType = 1;
-			Banner = Item.NPCtoBanner(1);
-			BannerItem = Item.BannerToItem(Banner);
-			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            Banner = NPC.type;
+            BannerItem = ItemType<BloodDropletBanner>();
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{ // Influences how the NPC looks in the Bestiary
 				Velocity = 0f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
 			};

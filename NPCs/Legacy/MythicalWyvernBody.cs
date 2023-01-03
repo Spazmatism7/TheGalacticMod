@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 
-namespace GalacticMod.NPCs.Old
+namespace GalacticMod.NPCs.Legacy
 {
 	public class MythicalWyvernBody : ModNPC
 	{

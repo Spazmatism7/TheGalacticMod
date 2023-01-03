@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.Utilities;
 using GalacticMod.Items.Accessories;
+using GalacticMod.NPCs.Banners;
 
 namespace GalacticMod.NPCs
 {
@@ -41,6 +42,8 @@ namespace GalacticMod.NPCs
 
             NPC.HitSound = SoundID.NPCHit7;
             NPC.DeathSound = SoundID.NPCDeath43;
+            Banner = NPC.type;
+            BannerItem = ItemType<GraniteCoreBanner>();
             NPC.value = Item.buyPrice(0, 0, 25, 0);
 
             NPC.buffImmune[BuffID.OnFire] = true;

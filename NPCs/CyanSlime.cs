@@ -5,6 +5,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.ItemDropRules;
 using GalacticMod.Assets.Config;
+using GalacticMod.NPCs.Banners;
 
 namespace GalacticMod.NPCs
 {
@@ -29,9 +30,9 @@ namespace GalacticMod.NPCs
 			NPC.aiStyle = 1;
 			AIType = 1;
 			AnimationType = 1;
-			Banner = Item.NPCtoBanner(1);
-			BannerItem = Item.BannerToItem(Banner);
-		}
+            Banner = NPC.type;
+            BannerItem = ItemType<CyanSlimeBanner>();
+        }
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{

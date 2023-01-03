@@ -1,20 +1,8 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Terraria;
-using Terraria.GameContent.Dyes;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Audio;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
-using Terraria.ModLoader.UI;
 using static Terraria.ModLoader.ModContent;
 using GalacticMod.NPCs.Bosses.PreHM;
 using GalacticMod.NPCs.Bosses.Hardmode;
@@ -25,7 +13,7 @@ using GalacticMod.Items.PostML.Galactic;
 using GalacticMod.Assets.Systems;
 using GalacticMod.Items.Hardmode.Asteroid;
 using GalacticMod.Items.Boss;
-using GalacticMod.NPCs.Old;
+using GalacticMod.NPCs.Legacy;
 using GalacticMod.Items.Old;
 using GalacticMod.Items.PreHM.Star;
 using GalacticMod.Items.PreHM.Nautilus;
@@ -119,7 +107,7 @@ namespace GalacticMod
                 // ... If you will call those two at the same time, then they both will appear in boss bar, correspondently on 48% and 24% of boss health bar
                 // Most of the time you will need at 0.5 (aka 50%) call, probably.
 
-                //phaseIndicator.Call("PhaseIndicator", NPCType<AsteroidBehemoth>(), (NPC npc, float difficulty) => 0.5f);
+                phaseIndicator.Call("PhaseIndicator", NPCType<AsteroidBehemoth>(), (NPC npc, float difficulty) => 0.5f);
 
                 phaseIndicator.Call("PhaseIndicator", NPCType<GalacticPeril>(), (NPC npc, float difficulty) => 0.8f);
                 phaseIndicator.Call("PhaseIndicator", NPCType<GalacticPeril>(), (NPC npc, float difficulty) => 0.6f);
@@ -127,7 +115,6 @@ namespace GalacticMod
                 phaseIndicator.Call("PhaseIndicator", NPCType<GalacticPeril>(), (NPC npc, float difficulty) => 0.2f);
                 if (Main.expertMode)
                     phaseIndicator.Call("PhaseIndicator", NPCType<GalacticPeril>(), (NPC npc, float difficulty) => 0.05f);
-
             }
 
             ModLoader.TryGetMod("CalamityMod", out Mod calamity);
