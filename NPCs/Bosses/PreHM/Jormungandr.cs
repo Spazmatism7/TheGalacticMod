@@ -11,6 +11,10 @@ using GalacticMod.Items.Boss;
 using GalacticMod.Items.PreHM.Nautilus;
 using static Terraria.ModLoader.ModContent;
 using GalacticMod.Items.Boss.Master;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
+using static tModPorter.ProgressUpdate;
+using Filters = Terraria.Graphics.Effects.Filters;
 
 namespace GalacticMod.NPCs.Bosses.PreHM
 {
@@ -18,6 +22,7 @@ namespace GalacticMod.NPCs.Bosses.PreHM
     public class JormungandrHead : ModNPC
     {
         int timer;
+        public Projectile cloak;
 
         public override void SetStaticDefaults()
         {
@@ -59,7 +64,7 @@ namespace GalacticMod.NPCs.Bosses.PreHM
 
             timer++;
 
-            if (timer < 3 * 60)
+            if (timer < 2 * 60)
             {
                 NPC.immortal = true;
                 NPC.dontTakeDamage = true;
@@ -122,15 +127,6 @@ namespace GalacticMod.NPCs.Bosses.PreHM
                 }
             }
 
-            int num107 = (int)(NPC.position.X / 16f) - 1;
-            int num108 = (int)((NPC.position.X + NPC.width) / 16f) + 2;
-            int num109 = (int)(NPC.position.Y / 16f) - 1;
-            int num110 = (int)((NPC.position.Y + NPC.height) / 16f) + 2;
-
-            if (num107 < 0) num107 = 0;
-            if (num108 > Main.maxTilesX) num108 = Main.maxTilesX;
-            if (num109 < 0) num109 = 0;
-            if (num110 > Main.maxTilesY) num110 = Main.maxTilesY;
             if (NPC.velocity.X < 0f) NPC.spriteDirection = 1;
             if (NPC.velocity.X > 0f) NPC.spriteDirection = -1;
 
@@ -140,13 +136,13 @@ namespace GalacticMod.NPCs.Bosses.PreHM
             Vector2 vector14 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
             float num118 = Main.rand.Next(-500, 501) + player.position.X + (player.width / 2);
             float num119 = Main.rand.Next(-500, 501) + player.position.Y + (player.height / 2);
-            num118 = ((int)(num118 / 16f) * 16);
-            num119 = ((int)(num119 / 16f) * 16);
-            vector14.X = ((int)(vector14.X / 16f) * 16);
-            vector14.Y = ((int)(vector14.Y / 16f) * 16);
+            num118 = (int)(num118 / 16f) * 16;
+            num119 = (int)(num119 / 16f) * 16;
+            vector14.X = (int)(vector14.X / 16f) * 16;
+            vector14.Y = (int)(vector14.Y / 16f) * 16;
             num118 -= vector14.X;
             num119 -= vector14.Y;
-            float num120 = (float)Math.Sqrt((num118 * num118 + num119 * num119));
+            float num120 = (float)Math.Sqrt(num118 * num118 + num119 * num119);
 
             float num123 = Math.Abs(num118);
             float num124 = Math.Abs(num119);
@@ -229,6 +225,11 @@ namespace GalacticMod.NPCs.Bosses.PreHM
                 }
             }
             NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X) + 1.57f;
+
+            if (Main.netMode != NetmodeID.Server) // This all needs to happen client-side!
+            {
+                //Filters.Scene.Activate("Jormungandr");
+            }
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -284,6 +285,8 @@ namespace GalacticMod.NPCs.Bosses.PreHM
         public override void OnKill()
         {
             Downeds.DownedSeaSerpent = true;
+
+            Filters.Scene["Jormungandr"].Deactivate();
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -348,7 +351,7 @@ namespace GalacticMod.NPCs.Bosses.PreHM
         {
             timer++;
 
-            if (timer < 3 * 60)
+            if (timer < 2 * 60)
             {
                 NPC.immortal = true;
                 NPC.dontTakeDamage = true;
@@ -428,7 +431,7 @@ namespace GalacticMod.NPCs.Bosses.PreHM
             timer++;
             spineTimer++;
 
-            if (timer < 3 * 60)
+            if (timer < 2 * 60)
             {
                 NPC.immortal = true;
                 NPC.dontTakeDamage = true;
@@ -521,7 +524,7 @@ namespace GalacticMod.NPCs.Bosses.PreHM
         {
             timer++;
 
-            if (timer < 3 * 60)
+            if (timer < 2 * 60)
             {
                 NPC.immortal = true;
                 NPC.dontTakeDamage = true;

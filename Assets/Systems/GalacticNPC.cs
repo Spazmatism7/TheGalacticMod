@@ -165,6 +165,8 @@ namespace GalacticMod.Assets.Systems
             }
         }
 
+        int oldAI = 0;
+
         public override void AI(NPC npc)
         {
             if (npc.type is NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonArcher or NPCID.SkeletonAstonaut or NPCID.SkeletonCommando or NPCID.SkeletonSniper or NPCID.SkeletonTopHat
@@ -211,7 +213,6 @@ namespace GalacticMod.Assets.Systems
                 or NPCID.DevourerTail || npc.boss)
                 npc.buffImmune[BuffType<Stunned>()] = true;
 
-            int oldAI = 0;
             if (npc.aiStyle != 0)
             {
                 oldAI = npc.aiStyle;
@@ -221,7 +222,6 @@ namespace GalacticMod.Assets.Systems
             if (stunned)
             {
                 npc.aiStyle = 0;
-                npc.velocity -= npc.velocity;
             }
             //-1 does cool stuff
             else

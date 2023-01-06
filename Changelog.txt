@@ -24,7 +24,7 @@ Added Hellfire Egg and Mysterious Crystal
 Added Relics
 Added Shroomstick
 Implemented Stardust Whip
-Added Sirocco
+Added Sirocco and Lightning Lash
 Added Soul Shard in the place of Shattered Insignias
 Added Shroomite Bullet
 Added Tide Turner
@@ -90,11 +90,11 @@ Shade armor now has a unique set bonus
 Storm's Herald now acts like a spear
 Reworked Iridium Blaster
 Enhanced Cursed Fireball
-Beetle Spear lasers fire sporatically
 Reworked Luminite Dagger
 Saxum projectiles now roll on contact with tiles, instead of being killed
 Carbonite no longer spawns as an ore, instead it drops from enemies
 Reworked Hellfire Dragon
+Reworked Boreal Wand
 
 [h3]Rebalances[/h3]
 Steel Bars are now sold for 40 silver
@@ -147,7 +147,7 @@ Shroom Blaster has increased stats, but slower speeds, and converts bullets into
 Vortex Launcher has more rockets avaliable, and will chose explosive rockets if explosive ammo is chosen
 Boomerang!! now autoswings
 Beetle Sword useTime increased from 20 to 30, but shootSpeed doubled
-Weevil Poker projectiles now die after 3 seconds
+Weevil Poker projectiles now die after 3 seconds and fire sporatically
 Hellfire Arrows fired from Shadowshot now have 2.5x knockback
 Icy Crypt is bigger, but no longer fires a projectile from the sky
 Increased Iridium Sword critical strike chance from 4 to 6
@@ -194,10 +194,10 @@ Altered Sere Bow sprite
 Updated Asteroid Punch sprite
 Extended Amaza Pickaxe handle
 Made Beetle Pickaxe far larger and removed dust effects
-Removed dust effects from Beetle Hamaxe and Beetle Sword
+Removed dust effects from Beetle Hamaxe and Scarab Sword
 Weevil Poker projectiles face the way they're fired
 Spectre Bolts give off light
-Spectre Curse and Terra Burn debuffs gives off less dust
+Spectre Curse and Terra Burn debuffs give off less dust
 Shortened Amaza Blade handle, but lengthed the blade
 Frost Blade's, Saxum's, Steel Sword's, and Iridium Sword's blades are longer
 Molten Throwing Axe handle is longer
@@ -208,6 +208,9 @@ Enemies drop gore upon death
 Resprited The Storm
 Resprited Terra Bolt
 Recolored Brightcore Staff
+Altered Christmas Cutter sprite
+Recolored Weevil Poker
+Edited Storm Ore Sprite
 
 [h3]Renaming[/h3]
 Renamed Lions Roar to Lion's Roar

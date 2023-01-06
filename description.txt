@@ -3,7 +3,7 @@ game. We also aim to improve the Terraria experience, and make each experience a
 
 There are over 300 new items for you to explore; including weapons, accessories, armors, tools, vanity and new blocks.
 
-The Galactic Mod adds:
+The Galactic Mod adds;
  - 7 new potions
  - 25 new accessories
  - 4 new crafting stations

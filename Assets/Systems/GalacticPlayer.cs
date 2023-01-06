@@ -269,11 +269,6 @@ namespace GalacticMod.Assets.Systems
                     zirconiumCharged = false; //Removes the outline effect if the player is unable to charge
             }
 
-            if (NPC.AnyNPCs(NPCType<JormungandrHead>()))
-            {
-                Lighting.GlobalBrightness = .1f;
-            }
-
             if (fireTotem)
             {
                 if (Player.HeldItem.damage >= 1) //If the player is holding a weapon and usetime cooldown is above 1

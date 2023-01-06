@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,8 +19,8 @@ namespace GalacticMod.Items.Hardmode.Steel
         {
             Item.damage = 70;
             Item.DamageType = DamageClass.Ranged;
-            Item.width = 28;
-            Item.height = 70;
+            Item.width = 46;
+            Item.height = 16;
             Item.useTime = 30;
             Item.useAnimation = 30;
             Item.useStyle = ItemUseStyleID.Shoot;

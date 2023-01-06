@@ -9,14 +9,12 @@ using System.Collections.Generic;
 using Terraria.GameContent;
 using GalacticMod.Buffs;
 
-namespace GalacticMod.Items.PreHM.Desert
+namespace GalacticMod.Items.Hardmode.Storm
 {
-    public class SandWhip : ModItem
+    public class LightningLash : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sirocco");
-            Tooltip.SetDefault("Reduces defense of tagged enemies");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
@@ -24,10 +22,10 @@ namespace GalacticMod.Items.PreHM.Desert
         {
             // This method quickly sets the whip's properties.
             // Mouse over to see its parameters.
-            Item.DefaultToWhip(ModContent.ProjectileType<SandWhipProjectile>(), 30, 2, 4);
+            Item.DefaultToWhip(ModContent.ProjectileType<LightningLashP>(), 50, 2, 4);
 
             Item.shootSpeed = 4;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Pink;
 
             Item.channel = true;
         }
@@ -36,11 +34,11 @@ namespace GalacticMod.Items.PreHM.Desert
         public override bool MeleePrefix() => true;
     }
 
-    public class SandWhipProjectile : ModProjectile
+    public class LightningLashP : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sirocco");
+            DisplayName.SetDefault("Lightning Lash");
 
             // This makes the projectile use whip collision detection and allows flasks to be applied to it.
             ProjectileID.Sets.IsAWhip[Type] = true;
@@ -87,7 +85,7 @@ namespace GalacticMod.Items.PreHM.Desert
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(ModContent.BuffType<WhiptagSand>(), 240);
+            target.AddBuff(ModContent.BuffType<Stunned>(), 20);
             Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
             Projectile.damage = 3 * (Projectile.damage / 5); //40% multihit penalty
         }

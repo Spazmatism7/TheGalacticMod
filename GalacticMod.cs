@@ -18,6 +18,9 @@ using GalacticMod.Items.Old;
 using GalacticMod.Items.PreHM.Star;
 using GalacticMod.Items.PreHM.Nautilus;
 using GalacticMod.Items.Boss.Master;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace GalacticMod
 {
@@ -44,6 +47,11 @@ namespace GalacticMod
             }*/
 
             //https://steamcommunity.com/sharedfiles/filedetails/?id=2832487441
+
+            if (Main.netMode != NetmodeID.Server)
+            {
+                Filters.Scene["Jormungandr"] = new Filter(new ScreenShaderData("FilterMoonlord").UseColor(0.05f, 0.05f, .05f).UseOpacity(0.4f), EffectPriority.High);
+            }
         }
 
         public override void Unload()
