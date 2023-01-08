@@ -15,6 +15,7 @@ namespace GalacticMod.Items.Hardmode.Storm
     {
         public override void SetStaticDefaults()
         {
+            Tooltip.SetDefault("Temporarily stuns enemies");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

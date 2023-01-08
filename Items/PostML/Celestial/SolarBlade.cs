@@ -220,7 +220,7 @@ namespace GalacticMod.Items.PostML.Celestial
             Projectile.tileCollide = true;
             Projectile.timeLeft = 100;
             Projectile.light = 1f;
-            Projectile.alpha = 100;
+            Projectile.alpha = 120;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
         }

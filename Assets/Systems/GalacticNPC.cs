@@ -166,6 +166,7 @@ namespace GalacticMod.Assets.Systems
         }
 
         int oldAI = 0;
+        Vector2 oldVelocity;
 
         public override void AI(NPC npc)
         {
@@ -216,18 +217,19 @@ namespace GalacticMod.Assets.Systems
             if (npc.aiStyle != 0)
             {
                 oldAI = npc.aiStyle;
-                npc.oldVelocity = npc.velocity;
+                oldVelocity = npc.velocity;
             }
 
             if (stunned)
             {
                 npc.aiStyle = 0;
+                npc.velocity -= npc.velocity;
             }
             //-1 does cool stuff
             else
             {
                 npc.aiStyle = oldAI;
-                npc.velocity = npc.oldVelocity;
+                npc.velocity = oldVelocity;
             }
         }
     }

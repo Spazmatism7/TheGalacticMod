@@ -43,6 +43,7 @@ Added Toxotai and Granite Core
 Added Infested, Elemental, and Nebula Flame debuffs
 Added Instability and Zirconium Slow debuffs
 Added Lutetium Armor buff and Lutetium Cooldown debuff
+Added Stunned debuff
 Added Sirrocco Tag debuff
 
 [h3]Tiles/Furniture[/h3]
@@ -211,6 +212,7 @@ Recolored Brightcore Staff
 Altered Christmas Cutter sprite
 Recolored Weevil Poker
 Edited Storm Ore Sprite
+Recolored Vanadium
 
 [h3]Renaming[/h3]
 Renamed Lions Roar to Lion's Roar

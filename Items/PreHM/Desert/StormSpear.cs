@@ -62,7 +62,7 @@ namespace GalacticMod.Items.PreHM.Desert
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cultist Spear");
+            DisplayName.SetDefault("Storm's Herald");
         }
 
         public override void SetDefaults()
@@ -71,7 +71,6 @@ namespace GalacticMod.Items.PreHM.Desert
             Projectile.height = 20;
             Projectile.aiStyle = 19;
             Projectile.penetrate = -1;
-            Projectile.scale = 1.25f;
             Projectile.alpha = 0;
 
             Projectile.hide = true;
