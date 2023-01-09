@@ -21,15 +21,15 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Misc
 		public override void SetDefaults()
 		{
 			Item.damage = 70;
-			Item.rare = 1;
+			Item.rare = ItemRarityID.Blue;
 			Item.width = 32;
 			Item.height = 32;
 			Item.maxStack = 999;
 			Item.useTime = 17;
 			Item.UseSound = SoundID.Item13;
-			Item.useStyle = 5;
+			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.shootSpeed = 8f;
-			Item.useAnimation = 20;
+			Item.useAnimation = 17;
 			Item.shoot = ModContent.ProjectileType<PlanteraSpikeballP>();
 			Item.DamageType = DamageClass.Throwing;
 

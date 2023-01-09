@@ -9,6 +9,7 @@ using Terraria.GameContent.Creative;
 using Terraria.DataStructures;
 using static Terraria.ModLoader.ModContent;
 using GalacticMod.Buffs;
+using GalacticMod.Assets.Systems;
 
 namespace GalacticMod.Items.ThrowingClass.Weapons.Explosives
 {

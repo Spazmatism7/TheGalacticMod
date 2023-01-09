@@ -26,7 +26,6 @@ namespace GalacticMod.Items.PostML.DebuffGun
             Projectile.light = 1f;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
-            ModContent.GetInstance<GalacticPlayer>().exemptProjs = true;
             Projectile.extraUpdates = 2;
 			Projectile.penetrate = 2;
         }
@@ -88,7 +87,7 @@ namespace GalacticMod.Items.PostML.DebuffGun
 			Projectile.aiStyle = -1;
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = -1;
-		}
+        }
 
 		public override void AI()
 		{

@@ -24,7 +24,6 @@ namespace GalacticMod.Items.PostML.DebuffGun
             Projectile.light = 1f;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Magic;
-            ModContent.GetInstance<GalacticPlayer>().exemptProjs = true;
             Projectile.extraUpdates = 2;
         }
 

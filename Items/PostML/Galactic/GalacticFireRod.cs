@@ -8,6 +8,7 @@ using Terraria.GameContent.Creative;
 using Terraria.Audio;
 using GalacticMod.Assets.Rarities;
 using Terraria.DataStructures;
+using GalacticMod.Assets.Systems;
 
 namespace GalacticMod.Items.PostML.Galactic
 {
@@ -157,7 +158,7 @@ namespace GalacticMod.Items.PostML.Galactic
             Projectile.aiStyle = -1;
             DrawOffsetX = 25;
             DrawOriginOffsetY = 25;
-            Projectile.light = 0.9f;
+            Projectile.light = 0.9f; 
         }
 
         public override void AI()

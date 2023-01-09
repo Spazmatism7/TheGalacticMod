@@ -37,7 +37,7 @@ namespace GalacticMod.Items.ThrowingClass.Weapons.Misc
 			Item.autoReuse = false;
 
 			Item.UseSound = SoundID.Item1;
-			Item.value = Item.sellPrice(copper: 75);
+			Item.value = Item.sellPrice(copper: 30);
 		}
 
 		public override void AddRecipes()

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.Utilities;
 using GalacticMod.NPCs.Bosses;
+using GalacticMod.Assets.Systems;
 
 namespace GalacticMod.Items.PostML.Galactic
 {
@@ -34,7 +35,6 @@ namespace GalacticMod.Items.PostML.Galactic
             Projectile.localNPCHitCooldown = 75;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -243,25 +243,29 @@ namespace GalacticMod.Items.PostML.Galactic
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lightning");
+            ProjectileID.Sets.SentryShot[Projectile.type] = true;
         }
 
         public override void SetDefaults()
         {
-            Projectile.width = 22;
-            Projectile.height = 22;
+            Projectile.width = 14;
+            Projectile.height = 14;
+            Projectile.aiStyle = 88;
+            Projectile.DamageType = DamageClass.Generic;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = true;
             Projectile.alpha = 255;
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 4;
-            Projectile.timeLeft = 450;
+            Projectile.timeLeft = 120;
             Projectile.scale = 0.75f;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 75;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 60;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -289,44 +293,42 @@ namespace GalacticMod.Items.PostML.Galactic
             return false;
         }
 
+
         public override bool PreDraw(ref Color lightColor)
         {
-            if (!Main.dedServ)
+            Color color = Lighting.GetColor((int)((double)Projectile.position.X + (double)Projectile.width * 0.5) / 16, (int)(((double)Projectile.position.Y + (double)Projectile.height * 0.5) / 16.0));
+            Vector2 end = Projectile.position + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
+            Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
+            Projectile.GetAlpha(color);
+            Vector2 vector = new Vector2(Projectile.scale) / 2f;
+            for (int i = 0; i < 2; i++)
             {
-                Color color = Lighting.GetColor((int)((double)Projectile.position.X + (double)Projectile.width * 0.5) / 16, (int)(((double)Projectile.position.Y + (double)Projectile.height * 0.5) / 16.0));
-                Vector2 end = Projectile.position + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
-                Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
-                Projectile.GetAlpha(color);
-                Vector2 vector = new Vector2(Projectile.scale) / 2f;
-                for (int i = 0; i < 2; i++)
+                float num = ((Projectile.localAI[1] == -1f || Projectile.localAI[1] == 1f) ? (-0.2f) : 0f);
+                if (i == 0)
                 {
-                    float num = ((Projectile.localAI[1] == -1f || Projectile.localAI[1] == 1f) ? (-0.2f) : 0f);
-                    if (i == 0)
+                    vector = new Vector2(Projectile.scale) * (0.5f + num);
+                    DelegateMethods.c_1 = new Color(113, 251, 255, 0) * 0.5f;
+                }
+                else
+                {
+                    vector = new Vector2(Projectile.scale) * (0.3f + num);
+                    DelegateMethods.c_1 = new Color(255, 255, 255, 0) * 0.5f;
+                }
+                DelegateMethods.f_1 = 1f;
+                for (int j = Projectile.oldPos.Length - 1; j > 0; j--)
+                {
+                    if (!(Projectile.oldPos[j] == Vector2.Zero))
                     {
-                        vector = new Vector2(Projectile.scale) * (0.5f + num);
-                        DelegateMethods.c_1 = new Color(113, 251, 255, 0) * 0.5f;
+                        Vector2 start = Projectile.oldPos[j] + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
+                        Vector2 end2 = Projectile.oldPos[j - 1] + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
+                        Utils.DrawLaser(Main.spriteBatch, tex, start, end2, vector, DelegateMethods.LightningLaserDraw);
                     }
-                    else
-                    {
-                        vector = new Vector2(Projectile.scale) * (0.3f + num);
-                        DelegateMethods.c_1 = new Color(255, 255, 255, 0) * 0.5f;
-                    }
+                }
+                if (Projectile.oldPos[0] != Vector2.Zero)
+                {
                     DelegateMethods.f_1 = 1f;
-                    for (int j = Projectile.oldPos.Length - 1; j > 0; j--)
-                    {
-                        if (!(Projectile.oldPos[j] == Vector2.Zero))
-                        {
-                            Vector2 start = Projectile.oldPos[j] + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
-                            Vector2 end2 = Projectile.oldPos[j - 1] + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
-                            Utils.DrawLaser(Main.spriteBatch, tex, start, end2, vector, DelegateMethods.LightningLaserDraw);
-                        }
-                    }
-                    if (Projectile.oldPos[0] != Vector2.Zero)
-                    {
-                        DelegateMethods.f_1 = 1f;
-                        Vector2 start2 = Projectile.oldPos[0] + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
-                        Utils.DrawLaser(Main.spriteBatch, tex, start2, end, vector, DelegateMethods.LightningLaserDraw);
-                    }
+                    Vector2 start2 = Projectile.oldPos[0] + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
+                    Utils.DrawLaser(Main.spriteBatch, tex, start2, end, vector, DelegateMethods.LightningLaserDraw);
                 }
             }
             return false;
@@ -334,7 +336,7 @@ namespace GalacticMod.Items.PostML.Galactic
 
         public override void AI()
         {
-            if (Projectile.scale > 0.05f)
+            if (Projectile.scale > 0.1f)
             {
                 Projectile.scale -= 0.005f;
             }
@@ -342,6 +344,7 @@ namespace GalacticMod.Items.PostML.Galactic
             {
                 Projectile.Kill();
             }
+
             if (Projectile.localAI[1] == 0f && Projectile.ai[0] >= 900f)
             {
                 Projectile.ai[0] -= 1000f;
@@ -349,7 +352,10 @@ namespace GalacticMod.Items.PostML.Galactic
             }
             int frameCounter = Projectile.frameCounter;
             Projectile.frameCounter = frameCounter + 1;
-            Lighting.AddLight(Projectile.Center, 0.3f, 0.45f, 0.5f);
+            if (!Main.dedServ)
+            {
+                Lighting.AddLight(Projectile.Center, 0.3f, 0.45f, 0.5f);
+            }
             if (Projectile.velocity == Vector2.Zero)
             {
                 if (Projectile.frameCounter >= Projectile.extraUpdates * 2)
@@ -417,11 +423,11 @@ namespace GalacticMod.Items.PostML.Galactic
                     {
                         flag2 = true;
                     }
-                    if (vector3.X * (float)(Projectile.extraUpdates + 2) * 2f * num5 + Projectile.localAI[0] > 40f)
+                    if (vector3.X * (Projectile.extraUpdates + 2) * 2f * num5 + Projectile.localAI[0] > 40f)
                     {
                         flag2 = true;
                     }
-                    if (vector3.X * (float)(Projectile.extraUpdates + 2) * 2f * num5 + Projectile.localAI[0] < -40f)
+                    if (vector3.X * (Projectile.extraUpdates + 2) * 2f * num5 + Projectile.localAI[0] < -40f)
                     {
                         flag2 = true;
                     }
@@ -430,10 +436,6 @@ namespace GalacticMod.Items.PostML.Galactic
                         if (num6++ >= 100)
                         {
                             Projectile.velocity = Vector2.Zero;
-                            /*if (Projectile.localAI[1] < 1f)
-							{
-								Projectile.localAI[1] += 2f;
-							}*/
                             Projectile.localAI[1] = 1f;
                             break;
                         }
@@ -445,12 +447,18 @@ namespace GalacticMod.Items.PostML.Galactic
                 if (Projectile.velocity != Vector2.Zero)
                 {
 
-                    Projectile.localAI[0] += spinningpoint.X * (float)(Projectile.extraUpdates + 1) * 2f * num5;
+                    Projectile.localAI[0] += spinningpoint.X * (Projectile.extraUpdates + 1) * 2f * num5;
                     Projectile.velocity = spinningpoint.RotatedBy(Projectile.ai[0] + (float)Math.PI / 2f) * num5;
                     Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f;
                 }
             }
         }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            Projectile.damage = Projectile.damage * 8 / 10;
+        }
+
         public override void Kill(int timeLeft)
         {
             if (Main.rand.NextBool(50))

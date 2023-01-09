@@ -23,7 +23,6 @@ namespace GalacticMod.Items.PostML.DebuffGun
             Projectile.light = 1f;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
-            ModContent.GetInstance<GalacticPlayer>().exemptProjs = true;
             Projectile.extraUpdates = 2;
         }
 
@@ -93,7 +92,6 @@ namespace GalacticMod.Items.PostML.DebuffGun
             Projectile.light = 0.5f;
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Ranged;
-            ModContent.GetInstance<GalacticPlayer>().exemptProjs = true;
             Projectile.alpha = 175;
         }
 

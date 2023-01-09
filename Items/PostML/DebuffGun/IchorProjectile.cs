@@ -21,8 +21,7 @@ namespace GalacticMod.Items.PostML.DebuffGun
             Projectile.aiStyle = -1;
             Projectile.light = 1f;
             Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.Ranged;
-            ModContent.GetInstance<GalacticPlayer>().exemptProjs = true;
+            Projectile.DamageType = DamageClass.Ranged; 
             Projectile.extraUpdates = 2;
         }
 

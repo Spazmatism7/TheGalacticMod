@@ -13,6 +13,7 @@ using System;
 using GalacticMod.Buffs;
 using GalacticMod.Assets.Rarities;
 using GalacticMod.Items.Hardmode.Mage;
+using GalacticMod.Assets.Systems;
 
 namespace GalacticMod.Items.Swords.CosmicEdgePath
 {
@@ -408,7 +409,7 @@ namespace GalacticMod.Items.Swords.CosmicEdgePath
 			Projectile.aiStyle = -1;
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = -1;
-		}
+        }
 
 		public override void AI()
 		{

@@ -1,28 +1,20 @@
-﻿using GalacticMod.Buffs;
-using GalacticMod.Items;
-using GalacticMod.NPCs;
-using GalacticMod.NPCs.Bosses;
-using GalacticMod.Projectiles;
+﻿using GalacticMod.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
-using System.IO;
-using System.Linq;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-using Terraria.GameContent.UI;
-using GalacticMod.Items.Boss;
-using GalacticMod.NPCs.Bosses.PostML;
-using GalacticMod.NPCs.Bosses.PreHM;
-using GalacitcMod.Items;
-using GalacticMod.Items.PreHM.Nautilus;
+using GalacticMod.Buffs;
+using GalacticMod.Items.Hardmode.Storm;
+using GalacticMod.Items.Hardmode.Mage;
+using GalacticMod.Items.Hardmode.Terra;
+using GalacticMod.Items.PostML.Celestial;
+using GalacticMod.Items.PostML.DebuffGun;
+using GalacticMod.Items.PostML.Galactic;
+using GalacticMod.Items.Swords.CosmicEdgePath;
+using GalacticMod.Items.ThrowingClass.Weapons.Explosives;
 
 namespace GalacticMod.Assets.Systems
 {
@@ -343,19 +335,19 @@ namespace GalacticMod.Assets.Systems
                     for (int j = 0; j < 1; j++)
                     {
                         float xpos = (Main.rand.NextFloat(-50, 50));
-
                         float ai = Main.rand.Next(100);
-
                         Vector2 rotation = -new Vector2(target.Center.X - xpos, target.Center.Y - 500) + target.Center;
+                        Projectile.NewProjectile(null, new Vector2(target.Center.X - xpos, target.Center.Y - 500), new Vector2(xpos * 0.02f, 5),
+                            ModContent.ProjectileType<LightningLashP2>(), damage, .5f, Main.myPlayer, rotation.ToRotation(), ai);
 
-                        int projID = Projectile.NewProjectile(null, new Vector2(target.Center.X - xpos, target.Center.Y - 500), new Vector2(xpos * 0.02f, 5),
-                            ModContent.ProjectileType<Items.PostML.Galactic.GalacticAmuletLightning>(), damage, .5f, Main.myPlayer, rotation.ToRotation(), ai);
-                        //player.GetProjectileSource_SetBonus(0)
-                        Main.projectile[projID].scale = 1;
-                        Main.projectile[projID].penetrate = 2;
-                        Main.projectile[projID].timeLeft = 600;
-                        Main.projectile[projID].DamageType = DamageClass.Generic;
-                        Main.projectile[projID].tileCollide = true;
+                        for (int i = 0; i < 25; i++)
+                        {
+                            float speedY = -3f;
+                            Vector2 dustspeed = new Vector2(0, speedY).RotatedByRandom(MathHelper.ToRadians(360));
+
+                            int dust2 = Dust.NewDust(new Vector2(target.Center.X - xpos, target.Center.Y - 500), 0, 0, DustID.Electric, dustspeed.X, dustspeed.Y, 229, default, 1.5f);
+                            Main.dust[dust2].noGravity = true;
+                        }
                     }
                 }
             }
@@ -394,8 +386,6 @@ namespace GalacticMod.Assets.Systems
             }
         }
 
-        public bool exemptProjs = false;
-
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) //Hitting enemy with any projectile
         {
             if (shadeBonus && proj.DamageType == DamageClass.Throwing)
@@ -415,9 +405,14 @@ namespace GalacticMod.Assets.Systems
                 }
             }
 
-            if (GalacticAmulet && !exemptProjs)
+            if (GalacticAmulet && !(proj.type == ProjectileType<GBoom>() || proj.type == ProjectileType<GFBoom>() || proj.type == ProjectileType<FireProjectile>() || proj.type == 
+                ProjectileType<CursedFlamesProjectile>() || proj.type == ProjectileType<CursedBoom>() || proj.type == ProjectileType<IceProjectile>() || proj.type == 
+                ProjectileType<IchorProjectile>() || proj.type == ProjectileType<VenomBolts>() || proj.type == ProjectileType<VenomProjectile>() || proj.type == ProjectileType<FieryExplosion>() 
+                || proj.type == ProjectileType<IceChunks>() || proj.type == ProjectileType<PrototypeExplosion>() || proj.type == ProjectileType<Stun>() || proj.type == 
+                ProjectileType<CosmicBoom>() || proj.type == ProjectileType<MartianExplosion>() || proj.type == ProjectileType<StardustExplosion>() || proj.type == ProjectileType<TerraSplosion>()
+                || proj.type == ProjectileType<GalacticAmuletLightning>()))
             {
-                if (Main.rand.NextBool(3))
+                if (Main.rand.NextBool(2))
                 {
                     for (int j = 0; j < 1; j++)
                     {

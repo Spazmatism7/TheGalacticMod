@@ -11,6 +11,7 @@ using static Terraria.ModLoader.ModContent;
 using GalacticMod.Assets.Rarities;
 using GalacticMod.Items.PreHM.Nautilus;
 using GalacticMod.Buffs;
+using GalacticMod.Assets.Systems;
 
 namespace GalacticMod.Items.ThrowingClass.Weapons.Explosives
 {

@@ -6,6 +6,7 @@ using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent.Creative;
 using Terraria.Audio;
+using GalacticMod.Assets.Systems;
 
 namespace GalacticMod.Items.Hardmode.Mage
 {
@@ -114,7 +115,7 @@ namespace GalacticMod.Items.Hardmode.Mage
 			Projectile.aiStyle = -1;
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = -1;
-		}
+        }
 
 		public override void AI()
 		{

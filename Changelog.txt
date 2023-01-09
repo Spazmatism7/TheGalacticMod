@@ -24,7 +24,7 @@ Added Hellfire Egg and Mysterious Crystal
 Added Relics
 Added Shroomstick
 Implemented Stardust Whip
-Added Sirocco and Lightning Lash
+Added Sirocco, Lightning Lash, and Kuiper Belt
 Added Soul Shard in the place of Shattered Insignias
 Added Shroomite Bullet
 Added Tide Turner
@@ -154,6 +154,7 @@ Icy Crypt is bigger, but no longer fires a projectile from the sky
 Increased Iridium Sword critical strike chance from 4 to 6
 Reduced Hell's Blaze mana cost to 10, but reduced its damage to 40
 Reduced amount of enemies spawned by Desert Spirit and homing velocity of Sandstorm projectile
+More projectiles are exempt from accessory abilities
 
 [h3]Graphic Changes[/h3]
 Resprited Titanium Shortsword
@@ -213,6 +214,9 @@ Altered Christmas Cutter sprite
 Recolored Weevil Poker
 Edited Storm Ore Sprite
 Recolored Vanadium
+Altered Enchanted Wrath sprite
+Altered Space Sword sprite
+Improved graphics of Galactic Amulet ability
 
 [h3]Renaming[/h3]
 Renamed Lions Roar to Lion's Roar
@@ -346,6 +350,7 @@ Spears now use the correct use style
 Shadowshot now has the correct rarity
 Fixed a bug with Magma Wand recipe
 Fixed several sound bugs
+Fixed Plantera's Spiky Ball firing twice
 
 [h2]Removals[/h2]
 Removed Carbonite Tile

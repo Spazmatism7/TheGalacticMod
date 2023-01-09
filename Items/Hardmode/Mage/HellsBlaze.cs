@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Terraria.GameContent.Creative;
 using Terraria.Audio;
 using GalacticMod.Projectiles;
+using GalacticMod.Assets.Systems;
 
 namespace GalacticMod.Items.Hardmode.Mage
 {
@@ -140,7 +141,7 @@ namespace GalacticMod.Items.Hardmode.Mage
             DrawOriginOffsetY = 25;
             Projectile.light = 0.9f;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 5;
+            Projectile.localNPCHitCooldown = 5; 
         }
 
         public override void AI()
